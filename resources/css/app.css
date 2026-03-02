@@ -95,6 +95,10 @@
     html[data-theme='dark'] {
         color-scheme: dark;
     }
+
+    html[data-theme='dark'] body {
+        @apply bg-surface-dark text-ink-100;
+    }
 }
 
 /* ────────────────────────────────────────────
@@ -159,10 +163,16 @@
 
     /* ── Section ── */
     .section {
-        @apply py-20;
+        @apply py-20 bg-surface;
     }
     .section-alt {
-        @apply bg-surface-alt dark:bg-surface-dark-alt;
+        @apply bg-surface-alt;
+    }
+    html[data-theme='dark'] .section {
+        @apply bg-surface-dark;
+    }
+    html[data-theme='dark'] .section.section-alt {
+        @apply bg-surface-dark-alt;
     }
     .section-title {
         @apply font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight text-ink-900 dark:text-ink-100;

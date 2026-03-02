@@ -16,6 +16,7 @@
         var k='pantoo-theme',s=localStorage.getItem(k);
         var t=(s==='light'||s==='dark')?s:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
         document.documentElement.setAttribute('data-theme',t);
+        document.documentElement.classList.toggle('dark', t === 'dark');
     })();
     </script>
 
@@ -640,6 +641,7 @@
 
         function applyTheme(t) {
             root.setAttribute('data-theme', t);
+            root.classList.toggle('dark', t === 'dark');
             if (iconSun && iconMoon) {
                 iconSun.style.display = t === 'dark' ? 'none' : 'block';
                 iconMoon.style.display = t === 'dark' ? 'block' : 'none';
