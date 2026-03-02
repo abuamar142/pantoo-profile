@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,6 +7,100 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+
+    --color-pantoo-50: #f0fdfa;
+    --color-pantoo-100: #ccfbf1;
+    --color-pantoo-200: #99f6e4;
+    --color-pantoo-300: #5eead4;
+    --color-pantoo-400: #2dd4bf;
+    --color-pantoo-500: #14b8a6;
+    --color-pantoo-600: #0d9488;
+    --color-pantoo-700: #0f766e;
+    --color-pantoo-800: #115e59;
+    --color-pantoo-900: #134e4a;
+
+    --color-ink-50: #f5f8fa;
+    --color-ink-100: #e8eef2;
+    --color-ink-200: #cdd9e1;
+    --color-ink-300: #aebfcb;
+    --color-ink-400: #8499a8;
+    --color-ink-500: #647b8d;
+    --color-ink-600: #4f6577;
+    --color-ink-700: #3f5263;
+    --color-ink-800: #2e3f4f;
+    --color-ink-900: #1a2836;
+
+    --radius-card: 1.25rem;
+    --radius-panel: 1.75rem;
+    --shadow-soft: 0 20px 48px -24px rgb(15 118 110 / 26%);
+    --shadow-float: 0 20px 70px -30px rgb(17 94 89 / 32%);
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply min-h-screen bg-pantoo-50 text-ink-900 antialiased;
+        background-image:
+            radial-gradient(64rem 34rem at 10% 0%, rgb(153 246 228 / 55%), transparent 72%),
+            radial-gradient(42rem 26rem at 90% 90%, rgb(13 148 136 / 24%), transparent 72%);
+    }
+}
+
+@layer components {
+    .section-shell {
+        @apply w-full px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20;
+    }
+
+    .ds-card {
+        @apply rounded-card border border-ink-200/80 bg-white/80 shadow-soft backdrop-blur;
+    }
+
+    .ds-panel {
+        @apply rounded-panel border border-pantoo-300/70 bg-white/88 shadow-float backdrop-blur;
+    }
+
+    .ds-chip {
+        @apply inline-flex items-center rounded-full border border-pantoo-400/60 bg-pantoo-100/85 px-3 py-1 text-xs font-semibold tracking-wide text-pantoo-900;
+    }
+
+    .ds-title {
+        @apply font-display text-3xl leading-tight md:text-4xl lg:text-5xl;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-full bg-pantoo-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-pantoo-800;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-full border border-ink-300 bg-white px-5 py-2.5 text-sm font-semibold text-ink-800 transition hover:border-pantoo-600 hover:text-pantoo-900;
+    }
+
+    .reveal {
+        animation: rise 0.7s ease-out both;
+    }
+
+    .reveal-2 {
+        animation-delay: 0.14s;
+    }
+
+    .reveal-3 {
+        animation-delay: 0.28s;
+    }
 }
