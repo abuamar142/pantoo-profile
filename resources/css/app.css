@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -6,10 +6,20 @@
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-@theme {
-    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Sora', ui-sans-serif, system-ui, sans-serif;
+/* ────────────────────────────────────────────
+   Dark mode via data-theme attribute
+   ──────────────────────────────────────────── */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
+/* ────────────────────────────────────────────
+   Design tokens (Tailwind v4 @theme)
+   ──────────────────────────────────────────── */
+@theme {
+    /* Fonts */
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-display: 'Sora', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+    /* Brand: Pantoo teal palette */
     --color-pantoo-50: #f0fdfa;
     --color-pantoo-100: #ccfbf1;
     --color-pantoo-200: #99f6e4;
@@ -21,86 +31,376 @@
     --color-pantoo-800: #115e59;
     --color-pantoo-900: #134e4a;
 
-    --color-ink-50: #f5f8fa;
-    --color-ink-100: #e8eef2;
-    --color-ink-200: #cdd9e1;
-    --color-ink-300: #aebfcb;
-    --color-ink-400: #8499a8;
-    --color-ink-500: #647b8d;
-    --color-ink-600: #4f6577;
-    --color-ink-700: #3f5263;
-    --color-ink-800: #2e3f4f;
-    --color-ink-900: #1a2836;
+    /* Neutral ink palette */
+    --color-ink-50: #f8fafb;
+    --color-ink-100: #f3f4f6;
+    --color-ink-200: #e5e7eb;
+    --color-ink-300: #d1d5db;
+    --color-ink-400: #9ca3af;
+    --color-ink-500: #6b7280;
+    --color-ink-600: #4b5563;
+    --color-ink-700: #374151;
+    --color-ink-800: #1f2937;
+    --color-ink-900: #111827;
 
-    --radius-card: 1.25rem;
-    --radius-panel: 1.75rem;
-    --shadow-soft: 0 20px 48px -24px rgb(15 118 110 / 26%);
-    --shadow-float: 0 20px 70px -30px rgb(17 94 89 / 32%);
+    /* Semantic surface colors */
+    --color-surface: #ffffff;
+    --color-surface-alt: #f8fafb;
+    --color-surface-dark: #0b0f19;
+    --color-surface-dark-alt: #111827;
+    --color-surface-dark-card: #1f2937;
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, .06), 0 6px 16px -4px rgba(0, 0, 0, .08);
+    --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, .08), 0 16px 40px -8px rgba(0, 0, 0, .12);
+    --shadow-card-dark: 0 1px 3px rgba(0, 0, 0, .3), 0 6px 16px -4px rgba(0, 0, 0, .4);
+    --shadow-card-dark-hover: 0 4px 12px rgba(0, 0, 0, .35), 0 16px 40px -8px rgba(0, 0, 0, .5);
+    --shadow-accent: 0 2px 8px rgba(13, 148, 136, .25);
+    --shadow-accent-hover: 0 4px 16px rgba(13, 148, 136, .35);
+    --shadow-mockup: 0 25px 60px -12px rgba(0, 0, 0, .15);
+    --shadow-phone: 0 20px 40px -8px rgba(0, 0, 0, .18);
+
+    /* Radius */
+    --radius-card: 1rem;
+    --radius-lg: 1.5rem;
+    --radius-btn: 0.75rem;
 }
 
-@keyframes rise {
+/* ────────────────────────────────────────────
+   Keyframes
+   ──────────────────────────────────────────── */
+@keyframes fade-up-in {
     from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(30px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+/* ────────────────────────────────────────────
+   Base layer
+   ──────────────────────────────────────────── */
 @layer base {
     html {
         scroll-behavior: smooth;
     }
 
     body {
-        @apply min-h-screen bg-pantoo-50 text-ink-900 antialiased;
-        background-image:
-            radial-gradient(64rem 34rem at 10% 0%, rgb(153 246 228 / 55%), transparent 72%),
-            radial-gradient(42rem 26rem at 90% 90%, rgb(13 148 136 / 24%), transparent 72%);
+        @apply min-h-screen bg-surface text-ink-900 antialiased;
+    }
+
+    html[data-theme='dark'] {
+        color-scheme: dark;
     }
 }
 
+/* ────────────────────────────────────────────
+   Component layer — reusable design system
+   ──────────────────────────────────────────── */
 @layer components {
-    .section-shell {
-        @apply w-full px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20;
+    /* ── Navigation ── */
+    .nav-bar {
+        @apply sticky top-0 z-50 border-b border-ink-200 backdrop-blur-xl backdrop-saturate-[180%] transition-shadow duration-300;
+        background: rgba(255, 255, 255, .82);
+    }
+    .dark\:nav-bar,
+    html[data-theme='dark'] .nav-bar {
+        background: rgba(11, 15, 25, .82);
+        @apply border-ink-700;
+    }
+    .nav-bar.scrolled {
+        @apply shadow-sm;
     }
 
-    .ds-card {
-        @apply rounded-card border border-ink-200/80 bg-white/80 shadow-soft backdrop-blur;
+    .nav-link {
+        @apply relative text-sm font-medium text-ink-500 no-underline transition-colors duration-200 py-2 hover:text-pantoo-600 dark:text-ink-400 dark:hover:text-pantoo-400;
+    }
+    .nav-link::after {
+        content: '';
+        @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-pantoo-600 dark:bg-pantoo-400 transition-transform duration-300 origin-left scale-x-0;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        @apply scale-x-100;
     }
 
-    .ds-panel {
-        @apply rounded-panel border border-pantoo-300/70 bg-white/88 shadow-float backdrop-blur;
+    /* ── Buttons ── */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 font-sans text-sm font-semibold px-7 py-3 rounded-btn border-none cursor-pointer no-underline transition-all duration-200;
+    }
+    .btn-accent {
+        @apply bg-pantoo-600 text-white shadow-accent hover:bg-pantoo-700 hover:shadow-accent-hover hover:-translate-y-px dark:bg-pantoo-400 dark:text-ink-900 dark:hover:bg-pantoo-300;
+    }
+    .btn-outline {
+        @apply bg-transparent text-ink-900 border-[1.5px] border-ink-200 hover:border-pantoo-600 hover:text-pantoo-600 hover:-translate-y-px dark:text-ink-100 dark:border-ink-700 dark:hover:border-pantoo-400 dark:hover:text-pantoo-400;
+    }
+    .btn-white {
+        @apply bg-white text-pantoo-700 font-bold shadow-card hover:-translate-y-px;
     }
 
-    .ds-chip {
-        @apply inline-flex items-center rounded-full border border-pantoo-400/60 bg-pantoo-100/85 px-3 py-1 text-xs font-semibold tracking-wide text-pantoo-900;
+    /* ── Chip / Badge ── */
+    .chip {
+        @apply inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase px-3.5 py-1.5 rounded-full bg-pantoo-100 text-pantoo-600 border border-pantoo-600/20 dark:bg-pantoo-600/15 dark:text-pantoo-400 dark:border-pantoo-400/20;
+    }
+    .chip-dot {
+        @apply size-1.5 rounded-full bg-pantoo-600 dark:bg-pantoo-400;
     }
 
-    .ds-title {
-        @apply font-display text-3xl leading-tight md:text-4xl lg:text-5xl;
+    /* ── Card ── */
+    .card {
+        @apply bg-surface border border-ink-200 rounded-card shadow-card transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5 dark:bg-surface-dark-card dark:border-ink-700 dark:shadow-card-dark dark:hover:shadow-card-dark-hover;
+    }
+    .card-flat {
+        @apply bg-surface border border-ink-200 rounded-card dark:bg-surface-dark-card dark:border-ink-700;
     }
 
-    .btn-primary {
-        @apply inline-flex items-center justify-center rounded-full bg-pantoo-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-pantoo-800;
+    /* ── Section ── */
+    .section {
+        @apply py-20;
+    }
+    .section-alt {
+        @apply bg-surface-alt dark:bg-surface-dark-alt;
+    }
+    .section-title {
+        @apply font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight text-ink-900 dark:text-ink-100;
+    }
+    .section-subtitle {
+        @apply text-base leading-relaxed text-ink-600 max-w-2xl md:text-lg dark:text-ink-300;
     }
 
-    .btn-secondary {
-        @apply inline-flex items-center justify-center rounded-full border border-ink-300 bg-white px-5 py-2.5 text-sm font-semibold text-ink-800 transition hover:border-pantoo-600 hover:text-pantoo-900;
+    /* ── Hero ── */
+    .hero-section {
+        @apply relative overflow-hidden py-20 md:py-24;
+        background: linear-gradient(135deg, #f0fdf9 0%, #ecfdf5 30%, #f0f9ff 70%, #faf5ff 100%);
+    }
+    html[data-theme='dark'] .hero-section {
+        background: linear-gradient(135deg, #0b0f19 0%, #0d1525 30%, #0f172a 70%, #111320 100%);
+    }
+    .hero-section::before {
+        content: '';
+        @apply absolute -top-1/2 -right-1/5 w-[800px] h-[800px] rounded-full pointer-events-none;
+        background: radial-gradient(circle, rgba(13,148,136,.08) 0%, transparent 70%);
+    }
+    .hero-section::after {
+        content: '';
+        @apply absolute -bottom-[30%] -left-[10%] w-[600px] h-[600px] rounded-full pointer-events-none;
+        background: radial-gradient(circle, rgba(99,102,241,.06) 0%, transparent 70%);
+    }
+    .hero-grid {
+        @apply absolute inset-0 pointer-events-none;
+        background-image:
+            linear-gradient(to right, rgba(13,148,136,.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(13,148,136,.03) 1px, transparent 1px);
+        background-size: 64px 64px;
     }
 
-    .reveal {
-        animation: rise 0.7s ease-out both;
+    /* ── Feature icon ── */
+    .feature-icon {
+        @apply size-12 rounded-xl flex items-center justify-center shrink-0;
     }
 
-    .reveal-2 {
-        animation-delay: 0.14s;
+    /* ── Stat card ── */
+    .stat-value {
+        @apply font-display text-3xl font-extrabold text-pantoo-600 dark:text-pantoo-400;
+    }
+    .stat-label {
+        @apply text-xs text-ink-500 mt-1 dark:text-ink-400;
     }
 
-    .reveal-3 {
-        animation-delay: 0.28s;
+    /* ── Compare table ── */
+    .compare-table {
+        @apply w-full border-collapse;
+    }
+    .compare-table th,
+    .compare-table td {
+        @apply px-5 py-4 text-left text-sm border-b border-ink-200 dark:border-ink-700;
+    }
+    .compare-table thead th {
+        @apply text-xs font-semibold uppercase tracking-wider text-ink-400 bg-surface-alt dark:bg-surface-dark-alt dark:text-ink-400;
+    }
+    .compare-table thead th:last-child {
+        @apply text-pantoo-600 dark:text-pantoo-400;
+    }
+    .compare-table td {
+        @apply text-ink-600 dark:text-ink-300;
+    }
+    .compare-table td:first-child {
+        @apply font-semibold text-ink-900 dark:text-ink-100;
+    }
+    .compare-table td:last-child {
+        @apply text-pantoo-600 font-semibold dark:text-pantoo-400;
+    }
+    .compare-table tr:last-child td {
+        @apply border-b-0;
+    }
+
+    /* ── Phase card ── */
+    .phase-card {
+        @apply relative p-6 rounded-card bg-surface border border-ink-200 dark:bg-surface-dark-card dark:border-ink-700;
+    }
+    .phase-number {
+        @apply inline-flex items-center justify-center size-8 rounded-full bg-pantoo-600 text-white text-xs font-bold dark:bg-pantoo-400 dark:text-ink-900;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+        @apply rounded-lg text-center relative overflow-hidden px-8 py-16;
+        background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+        border-radius: 1.5rem;
+    }
+    .cta-section::before {
+        content: '';
+        @apply absolute -top-1/2 -right-1/5 w-[500px] h-[500px] rounded-full pointer-events-none;
+        background: rgba(255,255,255,.06);
+    }
+
+    /* ── Info banner ── */
+    .info-banner {
+        @apply flex items-center gap-3 rounded-xl p-4 bg-pantoo-50 border border-pantoo-600/15 dark:bg-pantoo-600/10 dark:border-pantoo-400/15;
+    }
+    .info-banner-icon {
+        @apply size-8 rounded-full bg-pantoo-600 text-white flex items-center justify-center shrink-0 dark:bg-pantoo-400 dark:text-ink-900;
+    }
+
+    /* ── Arch list ── */
+    .arch-item {
+        @apply flex items-start gap-3 py-3;
+    }
+    .arch-icon {
+        @apply size-6 rounded-full bg-pantoo-100 flex items-center justify-center shrink-0 mt-0.5 dark:bg-pantoo-600/15;
+    }
+    .arch-icon svg {
+        @apply size-3 text-pantoo-600 dark:text-pantoo-400;
+    }
+
+    /* ── Theme toggle ── */
+    .theme-btn {
+        @apply size-[38px] rounded-[.625rem] border border-ink-200 bg-surface text-ink-500 flex items-center justify-center cursor-pointer transition-all duration-200 hover:border-pantoo-600 hover:text-pantoo-600 dark:border-ink-700 dark:bg-surface-dark-card dark:text-ink-400 dark:hover:border-pantoo-400 dark:hover:text-pantoo-400;
+    }
+    .theme-btn svg {
+        @apply size-[18px];
+    }
+
+    /* ── Hamburger ── */
+    .hamburger {
+        @apply size-[38px] rounded-[.625rem] border border-ink-200 bg-surface text-ink-900 flex items-center justify-center cursor-pointer dark:border-ink-700 dark:bg-surface-dark-card dark:text-ink-100;
+    }
+
+    /* ── Mobile menu ── */
+    .mobile-menu {
+        @apply fixed inset-0 z-[200] bg-surface p-6 hidden flex-col dark:bg-surface-dark;
+    }
+    .mobile-menu.open {
+        @apply flex;
+    }
+    .mobile-menu-link {
+        @apply block text-lg font-semibold text-ink-900 no-underline py-4 border-b border-ink-200 transition-colors duration-200 hover:text-pantoo-600 dark:text-ink-100 dark:border-ink-700 dark:hover:text-pantoo-400;
+    }
+
+    /* ── Mockup dashboard ── */
+    .mockup-dashboard {
+        @apply w-full max-w-[520px] aspect-[4/3] rounded-card bg-surface border border-ink-200 shadow-mockup flex flex-col overflow-hidden dark:bg-surface-dark-card dark:border-ink-700;
+    }
+    .mockup-topbar {
+        @apply h-9 bg-surface-alt border-b border-ink-200 flex items-center gap-1.5 px-3 dark:bg-surface-dark-alt dark:border-ink-700;
+    }
+    .mockup-dot {
+        @apply size-2.5 rounded-full;
+    }
+    .mockup-body {
+        @apply flex-1 grid gap-0;
+        grid-template-columns: 180px 1fr;
+    }
+    @media (max-width: 640px) {
+        .mockup-body {
+            grid-template-columns: 1fr;
+        }
+        .mockup-sidebar {
+            display: none;
+        }
+    }
+    .mockup-sidebar {
+        @apply border-r border-ink-200 p-4 flex flex-col gap-1.5 dark:border-ink-700;
+    }
+    .mockup-sidebar-item {
+        @apply h-2.5 rounded bg-ink-200 dark:bg-ink-700;
+    }
+    .mockup-sidebar-item.active {
+        @apply bg-pantoo-600 opacity-50 dark:bg-pantoo-400;
+    }
+    .mockup-content {
+        @apply p-4 grid grid-cols-3 gap-2.5;
+        grid-template-rows: auto 1fr;
+    }
+    .mockup-stat-box {
+        @apply h-12 rounded-lg bg-pantoo-50 border border-pantoo-600/10 dark:bg-pantoo-600/10 dark:border-pantoo-400/10;
+    }
+    .mockup-chart {
+        @apply col-span-full h-full min-h-20 rounded-lg bg-surface-alt border border-ink-200 relative overflow-hidden dark:bg-surface-dark-alt dark:border-ink-700;
+    }
+    .mockup-chart::after {
+        content: '';
+        @apply absolute bottom-0 left-0 right-0 h-3/5;
+        background: linear-gradient(to top, rgba(13,148,136,.08), transparent);
+    }
+
+    /* ── Mockup phone ── */
+    .mockup-phone {
+        @apply absolute -right-5 -bottom-2.5 w-[130px] h-[240px] rounded-[20px] bg-surface border-2 border-ink-200 shadow-phone flex flex-col overflow-hidden z-[2] dark:bg-surface-dark-card dark:border-ink-700;
+    }
+    @media (max-width: 640px) {
+        .mockup-phone {
+            @apply w-[100px] h-[180px] -right-2.5 -bottom-1 rounded-[14px];
+        }
+    }
+    .mockup-phone-notch {
+        @apply w-1/2 h-1.5 mx-auto mt-1.5 rounded-b-md bg-ink-200 dark:bg-ink-700;
+    }
+    .mockup-phone-body {
+        @apply flex-1 p-2 flex flex-col gap-1.5;
+    }
+    .mockup-phone-row {
+        @apply h-2 rounded bg-ink-200 dark:bg-ink-700;
+    }
+    .mockup-phone-card {
+        @apply h-7 rounded-md bg-pantoo-50 border border-pantoo-600/10 dark:bg-pantoo-600/10 dark:border-pantoo-400/10;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        @apply border-t border-ink-200 py-12 bg-surface dark:border-ink-700 dark:bg-surface-dark;
+    }
+    .footer-link {
+        @apply text-sm text-ink-600 no-underline transition-colors duration-200 hover:text-pantoo-600 dark:text-ink-400 dark:hover:text-pantoo-400;
+    }
+    .tech-badge {
+        @apply text-[.7rem] font-semibold px-3 py-1.5 rounded-full bg-pantoo-100 text-pantoo-600 border border-pantoo-600/15 dark:bg-pantoo-600/15 dark:text-pantoo-400 dark:border-pantoo-400/15;
+    }
+
+    /* ── Scroll animation ── */
+    .fade-up {
+        @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+    }
+    .fade-up.visible {
+        @apply opacity-100 translate-y-0;
+    }
+    .fade-up-delay-1 { transition-delay: .1s; }
+    .fade-up-delay-2 { transition-delay: .2s; }
+    .fade-up-delay-3 { transition-delay: .3s; }
+    .fade-up-delay-4 { transition-delay: .4s; }
+    .fade-up-delay-5 { transition-delay: .5s; }
+
+    /* ── Check icon helper (for inline SVG stroke color) ── */
+    .icon-check {
+        @apply text-emerald-500 dark:text-emerald-400;
+    }
+    .icon-muted {
+        @apply text-ink-400 dark:text-ink-500;
+    }
+    .icon-accent {
+        @apply text-pantoo-600 dark:text-pantoo-400;
     }
 }
