@@ -174,7 +174,10 @@
     /* ── Hero ── */
     .hero-section {
         @apply relative overflow-hidden py-20 md:py-24;
-        background: linear-gradient(135deg, #f0fdf9 0%, #ecfdf5 30%, #f0f9ff 70%, #faf5ff 100%);
+        background:
+            linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 65%, rgba(255,255,255,0.4) 75%, rgba(255,255,255,0) 90%),
+            linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%),
+            linear-gradient(90deg, rgba(200,180,100,0.35) 0%, rgba(140,200,160,0.42) 30%, rgba(58,175,169,0.55) 60%, rgba(58,175,169,0.72) 100%);
     }
     html[data-theme='dark'] .hero-section {
         background: linear-gradient(135deg, #0b0f19 0%, #0d1525 30%, #0f172a 70%, #111320 100%);
@@ -248,7 +251,7 @@
     /* ── CTA ── */
     .cta-section {
         @apply rounded-lg text-center relative overflow-hidden px-8 py-16;
-        background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+        background: linear-gradient(180deg, #72b73f 0%, #0f766e 100%);
         border-radius: 1.5rem;
     }
     .cta-section::before {

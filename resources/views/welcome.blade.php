@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pantoo | Operational Control in One Ecosystem</title>
-    <meta name="description" content="Pantoo menyatukan HRIS, attendance, dan operasional distribusi multi-cabang dalam satu platform SaaS.">
+    <meta name="description" content="Pantoo menyatukan HRMS, attendance, payroll, approval workflow, inventaris, dan distribusi multi-cabang dalam satu platform SaaS.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -46,7 +46,7 @@
                     <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
                 <a href="#solution" class="btn btn-accent hidden py-2 px-5 text-xs md:inline-flex">
-                    Explore Platform
+                    Coba Gratis
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
                 {{-- Mobile hamburger --}}
@@ -71,7 +71,7 @@
         <a href="#market" class="mobile-menu-link" onclick="closeMobileMenu()">Market</a>
         <a href="#strategy" class="mobile-menu-link" onclick="closeMobileMenu()">Strategy</a>
         <div class="mt-auto pt-8">
-            <a href="#solution" class="btn btn-accent w-full" onclick="closeMobileMenu()">Explore Platform</a>
+            <a href="#solution" class="btn btn-accent w-full" onclick="closeMobileMenu()">Coba Gratis</a>
         </div>
     </div>
 
@@ -87,21 +87,21 @@
                         Pantoo Company Profile
                     </div>
                     <h1 class="mx-auto mb-6 font-display text-[clamp(2rem,5.5vw,3.5rem)] font-extrabold leading-[1.1] text-ink-900 dark:text-ink-100">
-                        Operational Control<br>
+                        Perusahaan Anda Multi-Cabang,<br>
                         <span class="bg-gradient-to-r from-pantoo-600 to-cyan-500 bg-clip-text text-transparent">
-                            dalam Satu Ecosystem
+                            Tapi Sistemnya Masih Satu Ukuran untuk Semua?
                         </span>
                     </h1>
                     <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
-                        Pantoo menggabungkan HRIS, attendance, dan sistem distribusi multi-cabang dalam satu platform SaaS.
-                        Keputusan lebih cepat, kontrol lebih rapi, biaya software lebih efisien.
+                        Cabang Jakarta jam 8, Surabaya jam 9, Warehouse 3 shift, Marketing reguler, IT on-call.
+                        Pantoo membuat setiap cabang dan divisi punya aturan sendiri, tanpa kehilangan kendali terpusat.
                     </p>
                     <div class="mb-12 flex flex-wrap items-center justify-center gap-3">
                         <a href="#solution" class="btn btn-accent">
-                            Explore Platform
+                            Lihat Solusi Pantoo
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
-                        <a href="#market" class="btn btn-outline">Market & Business Model</a>
+                        <a href="#features" class="btn btn-outline">Fitur Highlight</a>
                     </div>
 
                     {{-- Dashboard Mockup --}}
@@ -150,16 +150,16 @@
             {{-- Stats Bar --}}
             <div class="fade-up fade-up-delay-3 mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-4">
                 <div class="card-flat p-5 text-center">
-                    <div class="stat-value">SaaS</div>
-                    <div class="stat-label">Business Model</div>
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Template aturan kerja</div>
                 </div>
                 <div class="card-flat p-5 text-center">
-                    <div class="stat-value">Multi</div>
-                    <div class="stat-label">Branch Focus</div>
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Kategori reimbursement</div>
                 </div>
                 <div class="card-flat p-5 text-center">
-                    <div class="stat-value">2026</div>
-                    <div class="stat-label">Go Live Plan</div>
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Dedicated support</div>
                 </div>
             </div>
         </div>
@@ -175,8 +175,7 @@
                 </div>
                 <h2 class="section-title mb-4">Masalah inti di distribusi & logistik hari ini</h2>
                 <p class="section-subtitle mx-auto">
-                    Sebagian besar perusahaan masih menggunakan software terpisah untuk HR dan operasional distribusi,
-                    sehingga data lambat, biaya tinggi, dan kontrol cabang tidak konsisten.
+                    Sistem HRMS yang kaku membuat perusahaan multi-cabang tetap kerja manual lewat Excel, WhatsApp, dan file terpisah.
                 </p>
             </div>
 
@@ -185,43 +184,43 @@
                     <div class="feature-icon mb-4 bg-red-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Sistem terfragmentasi</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">HRIS dan distribusi tidak berbagi data real-time, menyebabkan keputusan lambat.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Jam kerja berbeda, sistem tidak fleksibel</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Setiap cabang & divisi punya jadwal berbeda, tapi sistem hanya mendukung satu aturan global.</p>
                 </article>
                 <article class="card fade-up fade-up-delay-1 p-7">
                     <div class="feature-icon mb-4 bg-amber-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Kontrol cabang lemah</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Standar proses antar cabang sulit dijaga saat scale-up.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Payroll lintas cabang jadi mimpi buruk</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">UMR, tunjangan, dan lembur berbeda per lokasi membuat kalkulasi gaji rawan error dan telat.</p>
                 </article>
                 <article class="card fade-up fade-up-delay-2 p-7">
                     <div class="feature-icon mb-4 bg-violet-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Compliance berisiko</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Attendance lapangan rentan manipulasi dan sulit diaudit.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Approval tidak sesuai struktur organisasi</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Cuti, lembur, dan reimbursement sering lewat chat karena sistem tidak mendukung alur approval kompleks.</p>
                 </article>
                 <article class="card fade-up fade-up-delay-1 p-7">
                     <div class="feature-icon mb-4 bg-pink-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Cost structure tidak efisien</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Dua lisensi, dua vendor, plus biaya integrasi manual.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Sudah pakai HRMS, tapi masih manual</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Presensi terbatas, payroll rigid, dan setiap perubahan harus customisasi mahal.</p>
                 </article>
                 <article class="card fade-up fade-up-delay-2 p-7">
                     <div class="feature-icon mb-4 bg-cyan-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Fleksibilitas rendah</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Banyak solusi tidak cocok dengan SOP unik perusahaan.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Data tersebar di banyak file</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">HR dan Finance masih menggabungkan data dari banyak Excel secara berulang tiap bulan.</p>
                 </article>
                 <article class="card fade-up fade-up-delay-3 p-7">
                     <div class="feature-icon mb-4 bg-green-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Gap pasar masih terbuka</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Belum banyak platform yang benar-benar all-in-one.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Audit trail tidak lengkap</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Pengajuan dan approval sulit ditelusuri saat dibutuhkan untuk compliance dan evaluasi.</p>
                 </article>
             </div>
         </div>
@@ -237,10 +236,10 @@
                         <span class="chip-dot"></span>
                         Solution
                     </div>
-                    <h2 class="section-title mb-5">One ecosystem.<br>One source of operational truth.</h2>
+                    <h2 class="section-title mb-5">Tenang, ada Pantoo.</h2>
                     <p class="section-subtitle mb-8">
-                        Pantoo adalah cloud SaaS yang mengintegrasikan HRIS lengkap, attendance & shift management,
-                        operasional distribusi, tracking BBM, serta multi-branch management dalam alur yang terkoneksi.
+                        Pantoo adalah platform ERP yang dirancang agar setiap cabang dan divisi bisa punya aturan sendiri,
+                        tanpa kehilangan kontrol terpusat. Semua dapat dikonfigurasi dari satu dashboard, tanpa coding.
                     </p>
 
                     <div class="info-banner mb-8">
@@ -248,7 +247,7 @@
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                         </div>
                         <p class="text-sm font-semibold text-ink-900 dark:text-ink-100">
-                            Tidak perlu beli 2 software. Tidak perlu integrasi manual.
+                            Customable by design: cukup konfigurasi, bukan development berulang.
                         </p>
                     </div>
                 </div>
@@ -256,7 +255,7 @@
                 {{-- Right: Architecture Highlights --}}
                 <div class="card fade-up fade-up-delay-2 p-8">
                     <p class="mb-5 text-xs font-bold uppercase tracking-widest text-pantoo-600 dark:text-pantoo-400">
-                        Architecture Highlights
+                        Kelebihan HRMS Pantoo
                     </p>
                     <div class="divide-y divide-ink-100 dark:divide-ink-800">
                         <div class="arch-item">
@@ -264,8 +263,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
-                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Unified dashboard lintas fungsi</p>
-                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Semua data operasional dalam satu tampilan</p>
+                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Jam kerja dinamis per cabang & divisi</p>
+                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Support reguler, multi-shift, on-call dengan aturan berbeda tiap unit</p>
                             </div>
                         </div>
                         <div class="arch-item">
@@ -273,8 +272,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
-                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Data terpisah dan filter per cabang</p>
-                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Isolasi data dengan kontrol akses granular</p>
+                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Payroll mengikuti struktur bisnis Anda</p>
+                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Komponen gaji, tunjangan, dan lembur configurable per lokasi/divisi</p>
                             </div>
                         </div>
                         <div class="arch-item">
@@ -282,8 +281,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
-                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Scalable untuk ekspansi nasional</p>
-                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Tambah cabang tanpa ubah arsitektur</p>
+                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Approval workflow configurable</p>
+                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Single, sequential, parallel + delegasi otomatis</p>
                             </div>
                         </div>
                         <div class="arch-item">
@@ -291,8 +290,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
-                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Customizable mengikuti SOP perusahaan</p>
-                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Fleksibel terhadap proses bisnis unik</p>
+                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Audit trail end-to-end</p>
+                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Semua pengajuan dan approval tercatat serta ter-track</p>
                             </div>
                         </div>
                         <div class="arch-item">
@@ -300,8 +299,8 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                             </div>
                             <div>
-                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Subscription model low barrier</p>
-                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Mulai tanpa biaya setup besar</p>
+                                <p class="text-[.9rem] font-semibold text-ink-900 dark:text-ink-100">Minim kebutuhan customisasi tambahan</p>
+                                <p class="mt-1 text-xs text-ink-500 dark:text-ink-400">Bisnis berkembang, cabang bertambah, tinggal atur langsung jalan</p>
                             </div>
                         </div>
                     </div>
@@ -318,10 +317,9 @@
                     <span class="chip-dot"></span>
                     Product Deep Dive
                 </div>
-                <h2 class="section-title mb-4">Core modules untuk operasi distribusi yang akuntabel</h2>
+                <h2 class="section-title mb-4">Satu Platform. Semua Cabang. Semua Kebutuhan.</h2>
                 <p class="section-subtitle mx-auto">
-                    Fokus utama Pantoo adalah memadukan kontrol SDM, operasional cabang, dan compliance lapangan
-                    tanpa menambah kompleksitas implementasi.
+                    Kelebihan HRMS Pantoo dirancang untuk operasional harian yang kompleks namun tetap mudah dikontrol.
                 </p>
             </div>
 
@@ -330,48 +328,48 @@
                     <div class="feature-icon mb-5 bg-pantoo-100 dark:bg-pantoo-600/15">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="stroke-pantoo-600 dark:stroke-pantoo-400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Attendance Compliance</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Timestamp immutable, GPS coordinate, selfie verification, device tracking.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Smart Attendance System</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Presensi via smartphone + GPS + selfie. Support reguler, shift, on-call, WFH/WFA.</p>
                 </article>
 
                 <article class="card fade-up fade-up-delay-1 p-8">
                     <div class="feature-icon mb-5 bg-indigo-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Multi-Branch Rules</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Aturan attendance dan operasional dapat disesuaikan per cabang.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Flexible Payroll</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Kalkulasi otomatis dari presensi & lembur, komponen gaji configurable per cabang.</p>
                 </article>
 
                 <article class="card fade-up fade-up-delay-2 p-8">
                     <div class="feature-icon mb-5 bg-pink-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">HRIS Complete</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Data karyawan, struktur organisasi, dan shift dalam satu sistem.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Configurable Approval Workflow</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Single, sequential, atau parallel approval dengan delegasi otomatis.</p>
                 </article>
 
                 <article class="card fade-up fade-up-delay-1 p-8">
                     <div class="feature-icon mb-5 bg-amber-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Distribution Ops</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Kontrol operasional distribusi dan aktivitas cabang lebih terukur.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Cuti, Izin & Reimbursement</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Pengajuan digital, saldo cuti otomatis, 7 kategori reimbursement, multi-currency.</p>
                 </article>
 
                 <article class="card fade-up fade-up-delay-2 p-8">
                     <div class="feature-icon mb-5 bg-cyan-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Fuel Tracking</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Monitoring BBM untuk efisiensi biaya armada.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Real-Time Dashboard</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Monitoring seluruh cabang dari satu layar dengan filter cabang/divisi/periode.</p>
                 </article>
 
                 <article class="card fade-up fade-up-delay-3 p-8">
                     <div class="feature-icon mb-5 bg-violet-500/8">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                     </div>
-                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Customizable System</h3>
-                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Fleksibel terhadap kebutuhan proses dan request fitur internal.</p>
+                    <h3 class="mb-2 text-base font-bold text-ink-900 dark:text-ink-100">Inventaris & Distribusi</h3>
+                    <p class="text-sm leading-relaxed text-ink-600 dark:text-ink-300">Manajemen stok multi-gudang, tracking pengiriman, terintegrasi dengan data HRMS.</p>
                 </article>
             </div>
         </div>
@@ -460,7 +458,7 @@
                 </div>
                 <h2 class="section-title mb-4">Pantoo advantage dibanding kategori solusi lain</h2>
                 <p class="section-subtitle mx-auto">
-                    Pantoo menutup gap antara HRIS-only, distribution-only, dan ERP generik yang mahal serta kompleks.
+                    Mapping langsung masalah nyata perusahaan multi-cabang dengan solusi HRMS Pantoo.
                 </p>
             </div>
 
@@ -469,46 +467,27 @@
                     <table class="compare-table min-w-[680px]">
                         <thead>
                             <tr>
-                                <th>Feature</th>
-                                <th>HRIS Only</th>
-                                <th>Distribusi Only</th>
-                                <th class="min-w-[120px]">Pantoo</th>
+                                <th>Masalah Anda</th>
+                                <th class="min-w-[280px]">Solusi Pantoo</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php
                             $rows = [
-                                ['name' => 'HRIS', 'hris' => 'check', 'dist' => 'dash', 'pantoo' => 'accent'],
-                                ['name' => 'Distribusi', 'hris' => 'dash', 'dist' => 'check', 'pantoo' => 'accent'],
-                                ['name' => 'Multi Cabang Advanced', 'hris' => 'limited', 'dist' => 'limited', 'pantoo' => 'accent'],
-                                ['name' => 'Customizable', 'hris' => 'limited', 'dist' => 'limited', 'pantoo' => 'accent'],
-                                ['name' => 'No Setup Fee', 'hris' => 'dash', 'dist' => 'dash', 'pantoo' => 'accent'],
+                                ['problem' => 'Jam kerja tiap cabang beda, sistem tidak support', 'solution' => 'Konfigurasi independen per cabang & divisi'],
+                                ['problem' => 'Shift berbeda antar divisi', 'solution' => 'Reguler, multi-shift, on-call dalam satu sistem'],
+                                ['problem' => 'Payroll ribet karena komponen gaji beda per lokasi', 'solution' => 'Struktur payroll configurable per cabang & divisi'],
+                                ['problem' => 'Approval cuti/lembur/reimburse lewat WhatsApp', 'solution' => 'Workflow digital: single, sequential, atau parallel'],
+                                ['problem' => 'Approver sedang cuti, pengajuan stuck', 'solution' => 'Delegasi approval otomatis'],
+                                ['problem' => 'Sudah pakai HRMS tapi masih banyak manual', 'solution' => 'Customable by design, minim manual work'],
+                                ['problem' => 'Setiap perubahan harus bayar customisasi', 'solution' => 'Konfigurasi sendiri tanpa biaya tambahan'],
+                                ['problem' => 'Data tersebar di banyak Excel', 'solution' => 'Satu dashboard terpusat real-time'],
                             ];
                             @endphp
                             @foreach ($rows as $row)
                             <tr>
-                                <td>{{ $row['name'] }}</td>
-                                <td>
-                                    @if ($row['hris'] === 'check')
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-check" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                    @elseif ($row['hris'] === 'dash')
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-muted" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                                    @else
-                                        <span class="text-xs text-ink-400 dark:text-ink-500">Limited</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($row['dist'] === 'check')
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-check" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                    @elseif ($row['dist'] === 'dash')
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-muted" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                                    @else
-                                        <span class="text-xs text-ink-400 dark:text-ink-500">Limited</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-accent" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                </td>
+                                <td>{{ $row['problem'] }}</td>
+                                <td class="font-semibold text-pantoo-700 dark:text-pantoo-400">{{ $row['solution'] }}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -551,19 +530,20 @@
                     </div>
                 </div>
 
-                {{-- Traction & Vision --}}
+                {{-- Social Proof --}}
                 <div class="fade-up fade-up-delay-2">
                     <div class="chip mb-5">
                         <span class="chip-dot"></span>
-                        Traction & Vision
+                        Dibangun untuk Perusahaan yang Serius Bertumbuh
                     </div>
-                    <h2 class="section-title mb-6">Readiness saat ini dan arah jangka panjang</h2>
+                    <h2 class="section-title mb-6">Social proof Pantoo</h2>
                     <div class="mb-8 flex flex-col gap-3">
                         @foreach ([
-                            'Product architecture defined',
-                            'Core feature roadmap ready',
-                            'Target pilot customer identified',
-                            'Beta testing plan QX 2026',
+                            'Digunakan oleh perusahaan distribusi, manufaktur, dan retail chain',
+                            'Mendukung 50 hingga 5.000+ karyawan',
+                            'Multi-cabang tanpa batas',
+                            'Private & secure — data Anda hanya milik Anda',
+                            'Dedicated support 24/7',
                         ] as $traction)
                         <div class="flex items-center gap-3">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-check shrink-0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -573,10 +553,10 @@
                     </div>
 
                     <div class="card border-pantoo-600/20 bg-pantoo-50 p-7 dark:border-pantoo-400/20 dark:bg-pantoo-600/10">
-                        <p class="mb-3 text-[.65rem] font-bold uppercase tracking-widest text-ink-400 dark:text-ink-500">Long-term Vision</p>
+                        <p class="mb-3 text-[.65rem] font-bold uppercase tracking-widest text-ink-400 dark:text-ink-500">Technology</p>
                         <p class="text-[.9rem] font-semibold leading-relaxed text-ink-900 dark:text-ink-100">
-                            Pantoo menuju posisi sebagai operational operating system untuk perusahaan distribusi Indonesia,
-                            lalu berkembang ke ASEAN sebagai vertical-specific modular SaaS.
+                            Teknologi modern: GraphQL, Node.js, MongoDB. Mobile-first attendance dengan GPS + selfie,
+                            tanpa hardware fingerprint.
                         </p>
                     </div>
                 </div>
@@ -589,14 +569,13 @@
         <div class="mx-auto max-w-7xl px-6 md:px-8 xl:px-10">
             <div class="cta-section fade-up">
                 <h2 class="mx-auto mb-4 font-display text-[clamp(1.5rem,4vw,2.25rem)] font-bold text-white">
-                    Siap transformasi operasional distribusi Anda?
+                    Masih mau atur perusahaan multi-cabang pakai Excel dan WhatsApp?
                 </h2>
                 <p class="mx-auto mb-8 max-w-xl text-base leading-relaxed text-white/80">
-                    Pantoo dirancang sebagai operating system untuk perusahaan distribusi Indonesia:
-                    connected data, multi-branch ready, dan fleksibel terhadap SOP tiap organisasi.
+                    Coba Pantoo sekarang. Gratis. Tanpa ribet.
                 </p>
                 <a href="#solution" class="btn btn-white">
-                    Explore Platform
+                    Coba Gratis Sekarang
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
             </div>
@@ -616,7 +595,7 @@
                         <span class="font-display text-lg font-bold text-ink-900 dark:text-ink-100">Pantoo</span>
                     </div>
                     <p class="max-w-xs text-xs leading-relaxed text-ink-500 dark:text-ink-400">
-                        Operational control untuk distribusi modern, dalam satu platform yang siap scale.
+                        Satu platform ERP untuk HRMS, inventaris, dan distribusi yang fleksibel mengikuti struktur bisnis Anda.
                     </p>
                 </div>
 
