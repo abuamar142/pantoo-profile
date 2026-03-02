@@ -335,9 +335,11 @@
         <nav class="section-shell sticky top-0 z-50 flex items-center justify-between border-b border-ink-200/70 bg-white/55 py-4 backdrop-blur-xl reveal">
             <div class="font-display text-xl tracking-tight text-ink-900">Pantoo</div>
             <div class="hidden items-center gap-6 text-sm font-medium text-ink-700 md:flex">
-                <a href="#platform" class="transition hover:text-pantoo-800">Platform</a>
-                <a href="#benefit" class="transition hover:text-pantoo-800">Benefit</a>
-                <a href="#approach" class="transition hover:text-pantoo-800">Approach</a>
+                <a href="#problem" class="transition hover:text-pantoo-800">Problem</a>
+                <a href="#solution" class="transition hover:text-pantoo-800">Solution</a>
+                <a href="#features" class="transition hover:text-pantoo-800">Features</a>
+                <a href="#market" class="transition hover:text-pantoo-800">Market</a>
+                <a href="#strategy" class="transition hover:text-pantoo-800">Strategy</a>
             </div>
             <button id="theme-toggle" type="button" class="theme-toggle" aria-label="Toggle dark and light mode" aria-pressed="false">
                 <span class="theme-toggle-dot" aria-hidden="true"></span>
@@ -345,129 +347,281 @@
             </button>
         </nav>
 
-        <main class="section-shell mt-10 space-y-16 md:mt-14 md:space-y-20">
-            <section class="grid items-start gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-                <div class="space-y-6 reveal reveal-2">
-                    <span class="ds-chip">Operational Control in One Ecosystem</span>
-                    <h1 class="ds-title max-w-3xl text-ink-900">
-                        HRIS + Distribusi untuk perusahaan multi-cabang, dalam satu platform yang solid.
+        <main class="section-shell mt-12 space-y-20 pb-20 md:mt-16 md:space-y-24">
+            <section class="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
+                <div class="space-y-7 reveal reveal-2">
+                    <span class="ds-chip">Pantoo Company Profile</span>
+                    <h1 class="ds-title max-w-5xl text-ink-900">
+                        Operational control untuk distribusi modern, dalam satu platform yang siap scale.
                     </h1>
-                    <p class="max-w-2xl text-base leading-relaxed text-ink-600 md:text-lg">
-                        Pantoo dirancang untuk tim distribusi dan logistik yang butuh kontrol operasional yang rapi,
-                        data terhubung antar cabang, serta fondasi compliance yang siap berkembang.
+                    <p class="max-w-4xl text-base leading-relaxed text-ink-600 md:text-lg">
+                        Pantoo menggabungkan HRIS, attendance, dan sistem distribusi multi-cabang dalam satu ecosystem.
+                        Hasilnya: keputusan lebih cepat, kontrol lebih rapi, dan biaya software lebih efisien.
                     </p>
                     <div class="flex flex-wrap items-center gap-3">
-                        <a href="#platform" class="btn-primary">Lihat Struktur Platform</a>
-                        <a href="#approach" class="btn-secondary">Tentang Pendekatan Pantoo</a>
+                        <a href="#solution" class="btn-primary">Explore Platform</a>
+                        <a href="#market" class="btn-secondary">Market & Business Model</a>
+                    </div>
+                    <div class="grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-2xl border border-ink-200/80 p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Core Positioning</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Focused ERP for Distribution</p>
+                        </div>
+                        <div class="rounded-2xl border border-ink-200/80 p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Target Early Market</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Perusahaan 2-20 cabang</p>
+                        </div>
+                        <div class="rounded-2xl border border-ink-200/80 p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Pricing Approach</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Subscription, no setup fee</p>
+                        </div>
                     </div>
                 </div>
 
-                <aside class="ds-panel p-6 reveal reveal-3">
-                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500">Control Snapshot</p>
+                <aside class="ds-panel p-7 reveal reveal-3">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-ink-500">Executive Snapshot</p>
                     <div class="mt-5 grid grid-cols-3 gap-3">
                         <div class="rounded-2xl border border-ink-200/80 bg-white p-3">
-                            <p class="text-xs text-ink-500">Data Layer</p>
-                            <p class="mt-2 text-2xl font-bold text-ink-900">1</p>
+                            <p class="text-xs text-ink-500">Model</p>
+                            <p class="mt-2 text-xl font-bold text-ink-900">SaaS</p>
                         </div>
                         <div class="rounded-2xl border border-ink-200/80 bg-white p-3">
-                            <p class="text-xs text-ink-500">Cabang</p>
-                            <p class="mt-2 text-2xl font-bold text-ink-900">N+</p>
+                            <p class="text-xs text-ink-500">Branch Focus</p>
+                            <p class="mt-2 text-xl font-bold text-ink-900">Multi</p>
                         </div>
                         <div class="rounded-2xl border border-ink-200/80 bg-white p-3">
-                            <p class="text-xs text-ink-500">Sistem</p>
-                            <p class="mt-2 text-2xl font-bold text-ink-900">2 in 1</p>
+                            <p class="text-xs text-ink-500">Go Live Plan</p>
+                            <p class="mt-2 text-xl font-bold text-ink-900">QX 2026</p>
                         </div>
                     </div>
                     <div class="mt-5 rounded-2xl border border-pantoo-300/70 bg-pantoo-50 p-4 text-sm leading-relaxed text-ink-700">
-                        Arah awal web ini dibuat statis agar pesan produk dan identitas brand Pantoo sudah konsisten
-                        sebelum fitur aplikasi dibuka bertahap.
+                        Pantoo dirancang sebagai operating system untuk perusahaan distribusi Indonesia:
+                        connected data, multi-branch ready, dan fleksibel terhadap SOP tiap organisasi.
                     </div>
                 </aside>
             </section>
 
-            <section id="platform" class="space-y-6">
-                <div class="max-w-2xl space-y-3">
-                    <span class="ds-chip">Platform Essentials</span>
-                    <h2 class="font-display text-2xl text-ink-900 md:text-3xl">Fondasi produk untuk operasi harian yang terukur</h2>
+            <section id="problem" class="space-y-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="space-y-3">
+                        <span class="ds-chip">Problem Landscape</span>
+                        <h2 class="font-display text-2xl text-ink-900 md:text-3xl">Masalah inti di distribusi & logistik hari ini</h2>
+                    </div>
+                    <p class="max-w-xl text-sm leading-relaxed text-ink-600 md:text-base">
+                        Sebagian besar perusahaan masih menggunakan software terpisah untuk HR dan operasional distribusi,
+                        sehingga data lambat, biaya tinggi, dan kontrol cabang tidak konsisten.
+                    </p>
                 </div>
-                <div class="grid gap-4 md:grid-cols-3">
-                    <article class="ds-card p-5">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Connected HRIS</p>
-                        <h3 class="mt-3 text-lg font-bold text-ink-900">Data SDM terhubung dengan operasional</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-ink-600">
-                            Struktur karyawan, shift, dan presensi tidak berdiri sendiri, tapi langsung terkoneksi ke aktivitas cabang.
-                        </p>
+                <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Sistem terfragmentasi</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">HRIS dan distribusi tidak berbagi data real-time.</p>
                     </article>
-                    <article class="ds-card p-5">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Distribution Ops</p>
-                        <h3 class="mt-3 text-lg font-bold text-ink-900">Kontrol distribusi lintas cabang</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-ink-600">
-                            Cocok untuk model bisnis yang berkembang dari satu kota ke banyak cabang dengan kebutuhan kontrol konsisten.
-                        </p>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Kontrol cabang lemah</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">Standar proses antar cabang sulit dijaga saat scale-up.</p>
                     </article>
-                    <article class="ds-card p-5">
-                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Compliance Layer</p>
-                        <h3 class="mt-3 text-lg font-bold text-ink-900">Presensi dan jejak aktivitas lebih valid</h3>
-                        <p class="mt-2 text-sm leading-relaxed text-ink-600">
-                            Mendorong proses attendance yang lebih akurat untuk menekan manipulasi dan meningkatkan disiplin operasional.
-                        </p>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Compliance berisiko</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">Attendance lapangan rentan manipulasi dan sulit diaudit.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Cost structure tidak efisien</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">Dua lisensi, dua vendor, plus biaya integrasi manual.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Fleksibilitas rendah</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">Banyak solusi tidak cocok dengan SOP unik perusahaan.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <h3 class="text-base font-bold text-ink-900">Gap pasar masih terbuka</h3>
+                        <p class="mt-2 text-sm leading-relaxed text-ink-600">Belum banyak platform yang benar-benar all-in-one.</p>
                     </article>
                 </div>
             </section>
 
-            <section id="benefit" class="grid gap-5 lg:grid-cols-2">
-                <article class="ds-panel p-6 md:p-7">
-                    <span class="ds-chip">Untuk Manajemen</span>
-                    <h3 class="mt-4 font-display text-2xl text-ink-900">Satu dashboard untuk keputusan yang lebih cepat</h3>
-                    <p class="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
-                        Saat data HR dan distribusi menyatu, tim manajemen bisa melihat kondisi cabang tanpa menunggu rekap manual
-                        dari sistem yang terpisah.
+            <section id="solution" class="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+                <article class="ds-panel p-7 md:p-9">
+                    <span class="ds-chip">Solution</span>
+                    <h2 class="mt-4 font-display text-2xl text-ink-900 md:text-3xl">One ecosystem. One source of operational truth.</h2>
+                    <p class="mt-3 max-w-3xl text-sm leading-relaxed text-ink-600 md:text-base">
+                        Pantoo adalah cloud SaaS yang mengintegrasikan HRIS lengkap, attendance & shift management,
+                        operasional distribusi, tracking BBM, serta multi-branch management dalam alur yang terkoneksi.
                     </p>
-                    <ul class="mt-5 space-y-2 text-sm text-ink-700">
-                        <li>- kontrol performa cabang dalam satu alur</li>
-                        <li>- standar proses lebih konsisten antar tim</li>
-                        <li>- kesiapan scale-up lebih terstruktur</li>
+                    <div class="mt-5 rounded-2xl border border-pantoo-300/70 bg-pantoo-50 p-4 text-sm font-semibold text-ink-700">
+                        Tidak perlu beli 2 software. Tidak perlu integrasi manual.
+                    </div>
+                </article>
+                <article class="ds-card p-7 md:p-9">
+                    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Architecture Highlights</p>
+                    <ul class="mt-4 space-y-3 text-sm leading-relaxed text-ink-700 md:text-base">
+                        <li>- Unified dashboard lintas fungsi</li>
+                        <li>- Data terpisah dan filter per cabang</li>
+                        <li>- Scalable untuk ekspansi nasional</li>
+                        <li>- Customizable mengikuti SOP perusahaan</li>
+                        <li>- Subscription model low barrier to entry</li>
                     </ul>
                 </article>
-                <article class="ds-card p-6 md:p-7">
-                    <span class="ds-chip">Untuk Operasional</span>
-                    <h3 class="mt-4 font-display text-2xl text-ink-900">Proses lebih rapi, supervisi lebih ringan</h3>
-                    <p class="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
-                        Tim operasional mendapat alur kerja yang lebih jelas untuk attendance, koordinasi cabang,
-                        dan monitoring aktivitas lapangan.
+            </section>
+
+            <section id="features" class="space-y-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="space-y-3">
+                        <span class="ds-chip">Product Deep Dive</span>
+                        <h2 class="font-display text-2xl text-ink-900 md:text-3xl">Core modules untuk operasi distribusi yang akuntabel</h2>
+                    </div>
+                    <p class="max-w-xl text-sm leading-relaxed text-ink-600 md:text-base">
+                        Fokus utama Pantoo adalah memadukan kontrol SDM, operasional cabang, dan compliance lapangan
+                        tanpa menambah kompleksitas implementasi.
                     </p>
-                    <div class="mt-5 grid gap-3 sm:grid-cols-2">
-                        <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-4">
-                            <p class="text-xs uppercase tracking-wider text-ink-500">Attendance</p>
-                            <p class="mt-1 text-sm font-semibold text-ink-900">Lebih akuntabel</p>
+                </div>
+                <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Attendance Compliance</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Timestamp immutable, GPS coordinate, selfie verification, device tracking.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Multi-Branch Rules</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Aturan attendance dan operasional dapat disesuaikan per cabang.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">HRIS Complete</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Data karyawan, struktur organisasi, dan shift dalam satu sistem.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Distribution Ops</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Kontrol operasional distribusi dan aktivitas cabang lebih terukur.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Fuel Tracking</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Monitoring BBM untuk efisiensi biaya armada.</p>
+                    </article>
+                    <article class="ds-card p-5 transition duration-300 hover:-translate-y-0.5">
+                        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-pantoo-800">Customizable System</p>
+                        <p class="mt-3 text-sm leading-relaxed text-ink-600">Fleksibel terhadap kebutuhan proses dan request fitur internal.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="market" class="grid gap-5 lg:grid-cols-2">
+                <article class="ds-panel p-7 md:p-9">
+                    <span class="ds-chip">Target Market & Size</span>
+                    <h3 class="mt-4 font-display text-2xl text-ink-900">Distribusi & logistik Indonesia sebagai pasar utama</h3>
+                    <ul class="mt-4 grid gap-2 text-sm text-ink-700 md:text-base">
+                        <li>- Perusahaan distribusi nasional</li>
+                        <li>- Perusahaan logistik regional</li>
+                        <li>- FMCG distributor</li>
+                        <li>- Multi-cabang retail</li>
+                        <li>- Manufacturing dengan cabang banyak</li>
+                    </ul>
+                    <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">TAM</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Seluruh distribusi & logistik Indonesia</p>
                         </div>
-                        <div class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-4">
-                            <p class="text-xs uppercase tracking-wider text-ink-500">Cabang</p>
-                            <p class="mt-1 text-sm font-semibold text-ink-900">Lebih terkontrol</p>
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">SAM</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">SMB tanpa sistem terintegrasi</p>
                         </div>
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">SOM</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Tier 1-2, 2-20 cabang</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="ds-card p-7 md:p-9">
+                    <span class="ds-chip">Business Model</span>
+                    <h3 class="mt-4 font-display text-2xl text-ink-900">Subscription SaaS dengan recurring revenue</h3>
+                    <ul class="mt-4 space-y-2 text-sm text-ink-700 md:text-base">
+                        <li>- Monthly subscription per perusahaan</li>
+                        <li>- Pricing: jumlah karyawan, cabang, modul aktif</li>
+                        <li>- Add-on modules sebagai expansion revenue</li>
+                        <li>- Optional custom development fee</li>
+                    </ul>
+                    <div class="mt-6 rounded-2xl border border-pantoo-300/70 bg-pantoo-50 p-4 text-sm leading-relaxed text-ink-700">
+                        Keunggulan model: no upfront cost, predictable recurring revenue, dan retention tinggi karena sistem menjadi core operation.
                     </div>
                 </article>
             </section>
 
-            <section id="approach" class="ds-card p-6 md:p-8">
-                <div class="flex flex-wrap items-start justify-between gap-4">
-                    <div class="max-w-2xl">
-                        <span class="ds-chip">Implementation Approach</span>
-                        <h2 class="mt-3 font-display text-2xl text-ink-900 md:text-3xl">Build clean foundation first, then scale feature by feature</h2>
-                        <p class="mt-3 text-sm leading-relaxed text-ink-600 md:text-base">
-                            Versi saat ini sengaja dibuat fokus ke company profile dan identitas brand. Tahap berikutnya bisa
-                            melanjutkan modul produk secara terarah dengan design system yang sama.
+            <section class="space-y-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <div class="space-y-3">
+                        <span class="ds-chip">Competitive Positioning</span>
+                        <h2 class="font-display text-2xl text-ink-900 md:text-3xl">Pantoo advantage dibanding kategori solusi lain</h2>
+                    </div>
+                    <p class="max-w-xl text-sm leading-relaxed text-ink-600 md:text-base">
+                        Pantoo menutup gap antara HRIS-only, distribution-only, dan ERP generik yang mahal serta kompleks.
+                    </p>
+                </div>
+                <div class="ds-card overflow-x-auto p-5 md:p-7">
+                    <table class="w-full min-w-[760px] text-left text-sm">
+                        <thead>
+                            <tr class="border-b border-ink-200/70 text-ink-500">
+                                <th class="py-3 pr-4 font-semibold">Feature</th>
+                                <th class="py-3 pr-4 font-semibold">HRIS Only</th>
+                                <th class="py-3 pr-4 font-semibold">Distribusi Only</th>
+                                <th class="py-3 font-semibold text-pantoo-800">Pantoo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-ink-700">
+                            <tr class="border-b border-ink-200/60"><td class="py-3 pr-4 font-medium text-ink-900">HRIS</td><td class="py-3 pr-4">Yes</td><td class="py-3 pr-4">No</td><td class="py-3 font-semibold text-pantoo-800">Yes</td></tr>
+                            <tr class="border-b border-ink-200/60"><td class="py-3 pr-4 font-medium text-ink-900">Distribusi</td><td class="py-3 pr-4">No</td><td class="py-3 pr-4">Yes</td><td class="py-3 font-semibold text-pantoo-800">Yes</td></tr>
+                            <tr class="border-b border-ink-200/60"><td class="py-3 pr-4 font-medium text-ink-900">Multi Cabang Advanced</td><td class="py-3 pr-4">Limited</td><td class="py-3 pr-4">Limited</td><td class="py-3 font-semibold text-pantoo-800">Yes</td></tr>
+                            <tr class="border-b border-ink-200/60"><td class="py-3 pr-4 font-medium text-ink-900">Customizable</td><td class="py-3 pr-4">Limited</td><td class="py-3 pr-4">Limited</td><td class="py-3 font-semibold text-pantoo-800">Yes</td></tr>
+                            <tr><td class="py-3 pr-4 font-medium text-ink-900">No Setup Fee</td><td class="py-3 pr-4">No</td><td class="py-3 pr-4">No</td><td class="py-3 font-semibold text-pantoo-800">Yes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="strategy" class="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+                <article class="ds-panel p-7 md:p-9">
+                    <span class="ds-chip">Go-to-Market Strategy</span>
+                    <h3 class="mt-4 font-display text-2xl text-ink-900">Eksekusi bertahap untuk akuisisi B2B</h3>
+                    <div class="mt-5 grid gap-3 md:grid-cols-3">
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Phase 1</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Direct B2B Sales</p>
+                            <p class="mt-1 text-xs text-ink-600">Founder-led sales, network acquisition, distribution community.</p>
+                        </div>
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Phase 2</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Digital Acquisition</p>
+                            <p class="mt-1 text-xs text-ink-600">Meta Ads B2B, LinkedIn outreach, case study marketing.</p>
+                        </div>
+                        <div class="rounded-2xl border border-ink-200/70 bg-white p-4">
+                            <p class="text-xs uppercase tracking-wider text-ink-500">Phase 3</p>
+                            <p class="mt-2 text-sm font-semibold text-ink-900">Partnership</p>
+                            <p class="mt-1 text-xs text-ink-600">Consultants, software houses, and distribution associations.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="ds-card p-7 md:p-9">
+                    <span class="ds-chip">Traction & Vision</span>
+                    <h3 class="mt-4 font-display text-2xl text-ink-900">Readiness saat ini dan arah jangka panjang</h3>
+                    <ul class="mt-4 space-y-2 text-sm text-ink-700 md:text-base">
+                        <li>- Product architecture defined</li>
+                        <li>- Core feature roadmap ready</li>
+                        <li>- Target pilot customer identified</li>
+                        <li>- Beta testing plan QX 2026</li>
+                    </ul>
+                    <div class="mt-6 rounded-2xl border border-pantoo-300/70 bg-pantoo-50 p-4">
+                        <p class="text-xs uppercase tracking-wider text-ink-500">Long-term Vision</p>
+                        <p class="mt-2 text-sm font-semibold leading-relaxed text-ink-900">
+                            Pantoo menuju posisi sebagai operational operating system untuk perusahaan distribusi Indonesia,
+                            lalu berkembang ke ASEAN sebagai vertical-specific modular SaaS.
                         </p>
                     </div>
-                    <a href="#" class="btn-primary">Masuk Fase Selanjutnya</a>
-                </div>
+                </article>
             </section>
         </main>
 
-        <footer class="section-shell mt-14 border-t border-ink-200/70 pt-6 text-sm text-ink-600">
+        <footer class="section-shell border-t border-ink-200/70 py-6 text-sm text-ink-600">
             <div class="flex flex-wrap items-center justify-between gap-3">
-                <p>© {{ date('Y') }} Pantoo. Static company profile phase.</p>
-                <p>Built with Laravel {{ app()->version() }} + Tailwind CSS</p>
+                <p>© {{ date('Y') }} Pantoo. Company profile page built from Pantoo pitch deck narrative.</p>
+                <p>Laravel {{ app()->version() }} · Tailwind CSS · Static-first website</p>
             </div>
         </footer>
     </div>
