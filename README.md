@@ -1,36 +1,75 @@
-# Pantoo Landing Web
+# Pantoo Company Profile Web
 
-Landing page awal untuk Pantoo yang dibangun menggunakan Laravel dengan pendekatan **static-first**.
+Landing page perusahaan **Pantoo** berbasis Laravel dengan pendekatan **static-first**.  
+Fokus fase ini adalah company profile yang ringan, modern, dan siap dikembangkan ke fitur aplikasi berikutnya.
 
-## Project Overview
+## Ringkasan
 
-Pantoo adalah platform SaaS untuk perusahaan distribusi dan logistik yang menggabungkan:
+Pantoo adalah platform SaaS untuk operasional perusahaan distribusi dan logistik multi-cabang, dengan fokus pada:
 
-- HRIS
-- attendance/compliance
-- operasional distribusi multi-cabang
-
-dalam satu ekosistem data terintegrasi.
+- HRMS (attendance, payroll, approval workflow)
+- Kontrol operasional lintas cabang/divisi
+- Data terpusat dalam satu ekosistem
 
 ## Tech Stack
 
 - Laravel 12
-- PHP 8.4+
-- Blade template
+- PHP `^8.2`
+- Blade Template
+- Tailwind CSS v4
+- Vite 7
 
-## Cara Menjalankan Project
+## Struktur Utama
 
-Karena environment init awal menggunakan container, cara paling aman adalah menjalankan via Docker.
+- `routes/web.php` - route landing page (`/`)
+- `resources/views/welcome.blade.php` - konten utama company profile
+- `resources/css/app.css` - design system (token warna, komponen, dark/light mode)
+- `resources/js/app.js` - bootstrap JS Vite
 
-### Opsi 1 (Recommended): Jalankan via Docker
+## Menjalankan Project
 
-1. Masuk ke root project:
+### Opsi A - Local Native
+
+Prerequisite:
+
+- PHP `>= 8.2`
+- Composer
+- Node.js `>= 20` + npm
+
+Langkah:
 
 ```bash
 cd /home/abuamar/Personal/projects/laravel/pantoo/profile
+composer install
+cp .env.example .env
+php artisan key:generate
+npm install
 ```
 
-2. Jalankan server Laravel dari container PHP 8.4:
+Jalankan development server:
+
+```bash
+php artisan serve
+npm run dev
+```
+
+Buka:
+
+```text
+http://127.0.0.1:8000
+```
+
+### Opsi B - Docker (PHP di container)
+
+Install dependency PHP (sekali saat awal):
+
+```bash
+docker run --rm -u $(id -u):$(id -g) \
+  -v $(pwd):/app -w /app \
+  composer:2 composer install
+```
+
+Jalankan Laravel server dari container:
 
 ```bash
 docker run --rm -it \
@@ -42,42 +81,30 @@ docker run --rm -it \
   sh -lc "php artisan serve --host=0.0.0.0 --port=8000"
 ```
 
-3. Buka di browser:
+Jalankan Vite (di host):
+
+```bash
+npm install
+npm run dev
+```
+
+Buka:
 
 ```text
 http://localhost:8000
 ```
 
-### Opsi 2: Jalankan secara lokal (tanpa Docker)
+## Build & Maintenance
 
-Prerequisite:
-- PHP `>= 8.4`
-- Composer
-
-Langkah:
+Build asset production:
 
 ```bash
-cd /home/abuamar/Personal/projects/laravel/pantoo/profile
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan serve
+npm run build
 ```
 
-Lalu buka:
+Cache ulang view (opsional, untuk validasi):
 
-```text
-http://127.0.0.1:8000
+```bash
+php artisan view:clear
+php artisan view:cache
 ```
-
-## Struktur Penting
-
-- `routes/web.php` -> route halaman utama
-- `resources/views/welcome.blade.php` -> konten landing page statis
-
-## Status Saat Ini
-
-- [x] Laravel project initialized
-- [x] Single index page untuk landing
-- [ ] Fitur produk (next phase)
