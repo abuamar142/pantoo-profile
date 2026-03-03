@@ -4,6 +4,8 @@ return [
     'meta' => [
         'title' => 'Pantoo | Operational Control in One Ecosystem',
         'description' => 'Pantoo unifies HRMS, attendance, payroll, approval workflow, inventory, and multi-branch distribution in one SaaS platform.',
+        'keywords' => 'Pantoo, Indonesia HRMS, multi-branch payroll, GPS selfie attendance, approval workflow, distribution ERP, logistics SaaS',
+        'og_image_alt' => 'Pantoo, multi-branch operations platform for HRMS, inventory, and distribution.',
     ],
     'theme' => [
         'toggle' => 'Toggle theme',

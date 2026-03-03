@@ -4,6 +4,8 @@ return [
     'meta' => [
         'title' => 'Pantoo | Kontrol Operasional dalam Satu Ekosistem',
         'description' => 'Pantoo menyatukan HRMS, attendance, payroll, approval workflow, inventaris, dan distribusi multi-cabang dalam satu platform SaaS.',
+        'keywords' => 'Pantoo, HRMS Indonesia, payroll multi cabang, attendance GPS selfie, approval workflow, ERP distribusi, SaaS logistik',
+        'og_image_alt' => 'Pantoo, platform operasional multi-cabang untuk HRMS, inventaris, dan distribusi.',
     ],
     'theme' => [
         'toggle' => 'Ubah tema',

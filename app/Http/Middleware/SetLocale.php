@@ -14,10 +14,17 @@ class SetLocale
     public function handle(Request $request, Closure $next): Response
     {
         $supportedLocales = ['id', 'en'];
-        $locale = session('locale', 'id');
+        $routeLocale = $request->route('locale');
 
-        if (! in_array($locale, $supportedLocales, true)) {
-            $locale = config('app.fallback_locale', 'en');
+        if (is_string($routeLocale) && in_array($routeLocale, $supportedLocales, true)) {
+            $locale = $routeLocale;
+            session(['locale' => $locale]);
+        } else {
+            $locale = session('locale', config('app.locale', 'id'));
+
+            if (! in_array($locale, $supportedLocales, true)) {
+                $locale = config('app.fallback_locale', 'en');
+            }
         }
 
         app()->setLocale($locale);

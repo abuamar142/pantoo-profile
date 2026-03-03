@@ -1,14 +1,84 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@php
+    $locale = app()->getLocale();
+    $copy = trans('landing');
+
+    $canonicalUrl = route('landing', ['locale' => $locale]);
+    $alternateIdUrl = route('landing', ['locale' => 'id']);
+    $alternateEnUrl = route('landing', ['locale' => 'en']);
+
+    $robotsContent = app()->environment('production')
+        ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        : 'noindex, nofollow';
+
+    $ogLocale = $locale === 'id' ? 'id_ID' : 'en_US';
+    $ogLocaleAlternate = $locale === 'id' ? 'en_US' : 'id_ID';
+    $ogImageUrl = asset('pantoo.ico');
+
+    $schemaGraph = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Organization',
+                '@id' => $alternateIdUrl.'#organization',
+                'name' => 'Pantoo',
+                'url' => $alternateIdUrl,
+                'logo' => $ogImageUrl,
+                'description' => $copy['meta']['description'],
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => $alternateIdUrl.'#website',
+                'url' => $alternateIdUrl,
+                'name' => 'Pantoo',
+                'inLanguage' => $locale === 'id' ? 'id-ID' : 'en-US',
+                'publisher' => ['@id' => $alternateIdUrl.'#organization'],
+            ],
+            [
+                '@type' => 'SoftwareApplication',
+                '@id' => $canonicalUrl.'#software',
+                'name' => 'Pantoo',
+                'applicationCategory' => 'BusinessApplication',
+                'operatingSystem' => 'Web',
+                'url' => $canonicalUrl,
+                'description' => $copy['meta']['description'],
+                'publisher' => ['@id' => $alternateIdUrl.'#organization'],
+                'availableLanguage' => ['id-ID', 'en-US'],
+            ],
+        ],
+    ];
+@endphp
+<html lang="{{ str_replace('_', '-', $locale) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ __('landing.meta.title') }}</title>
-    <meta name="description" content="{{ __('landing.meta.description') }}">
+    <title>{{ $copy['meta']['title'] }}</title>
+    <meta name="description" content="{{ $copy['meta']['description'] }}">
+    <meta name="keywords" content="{{ $copy['meta']['keywords'] }}">
+    <meta name="author" content="Pantoo">
+    <meta name="robots" content="{{ $robotsContent }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+    <link rel="alternate" hreflang="id-ID" href="{{ $alternateIdUrl }}">
+    <link rel="alternate" hreflang="en-US" href="{{ $alternateEnUrl }}">
+    <link rel="alternate" hreflang="x-default" href="{{ $alternateIdUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pantoo">
+    <meta property="og:title" content="{{ $copy['meta']['title'] }}">
+    <meta property="og:description" content="{{ $copy['meta']['description'] }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:locale" content="{{ $ogLocale }}">
+    <meta property="og:locale:alternate" content="{{ $ogLocaleAlternate }}">
+    <meta property="og:image" content="{{ $ogImageUrl }}">
+    <meta property="og:image:alt" content="{{ $copy['meta']['og_image_alt'] }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $copy['meta']['title'] }}">
+    <meta name="twitter:description" content="{{ $copy['meta']['description'] }}">
+    <meta name="twitter:image" content="{{ $ogImageUrl }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('pantoo.ico') }}">
     <link rel="shortcut icon" href="{{ asset('pantoo.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="application/ld+json">{!! json_encode($schemaGraph, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}</script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -21,16 +91,12 @@
         document.documentElement.classList.toggle('dark', t === 'dark');
     })();
     </script>
-    @php
-        $locale = app()->getLocale();
-        $copy = trans('landing');
-    @endphp
 
     {{-- ==================== NAVIGATION ==================== --}}
     <nav class="nav-bar" id="navbar">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-8 xl:px-10">
             {{-- Logo --}}
-            <a href="#" class="flex items-center gap-2 no-underline">
+            <a href="{{ route('landing', ['locale' => $locale]) }}" class="flex items-center gap-2 no-underline">
                 <div class="flex size-8 items-center justify-center overflow-hidden rounded-lg">
                     <img src="{{ asset('pantoo.ico') }}" alt="Pantoo icon" class="h-full w-full object-cover">
                 </div>
@@ -49,8 +115,8 @@
             {{-- Right Side --}}
             <div class="flex items-center gap-2">
                 <div class="lang-switch" aria-label="{{ $copy['lang']['aria'] }}">
-                    <a href="{{ route('locale.switch', ['locale' => 'id']) }}" class="lang-btn {{ $locale === 'id' ? 'active' : '' }}">{{ $copy['lang']['id'] }}</a>
-                    <a href="{{ route('locale.switch', ['locale' => 'en']) }}" class="lang-btn {{ $locale === 'en' ? 'active' : '' }}">{{ $copy['lang']['en'] }}</a>
+                    <a href="{{ route('landing', ['locale' => 'id']) }}" class="lang-btn {{ $locale === 'id' ? 'active' : '' }}">{{ $copy['lang']['id'] }}</a>
+                    <a href="{{ route('landing', ['locale' => 'en']) }}" class="lang-btn {{ $locale === 'en' ? 'active' : '' }}">{{ $copy['lang']['en'] }}</a>
                 </div>
                 <button id="theme-toggle" type="button" class="theme-btn" aria-label="{{ $copy['theme']['toggle'] }}">
                     <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -82,14 +148,15 @@
         <a href="#market" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['market'] }}</a>
         <a href="#strategy" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['strategy'] }}</a>
         <div class="mt-4 grid grid-cols-2 gap-2">
-            <a href="{{ route('locale.switch', ['locale' => 'id']) }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
-            <a href="{{ route('locale.switch', ['locale' => 'en']) }}" class="btn {{ $locale === 'en' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['en'] }}</a>
+            <a href="{{ route('landing', ['locale' => 'id']) }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
+            <a href="{{ route('landing', ['locale' => 'en']) }}" class="btn {{ $locale === 'en' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['en'] }}</a>
         </div>
         <div class="mt-auto pt-8">
             <a href="#solution" class="btn btn-accent w-full" onclick="closeMobileMenu()">{{ $copy['nav']['cta'] }}</a>
         </div>
     </div>
 
+    <main id="main-content">
     {{-- ==================== HERO SECTION ==================== --}}
     <section class="hero-section">
         <div class="hero-grid"></div>
@@ -524,6 +591,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     {{-- ==================== FOOTER ==================== --}}
     <footer class="footer">

@@ -2,16 +2,67 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/locale/{locale}', function (string $locale) {
-    $supportedLocales = ['id', 'en'];
+$supportedLocales = ['id', 'en'];
 
+Route::get('/sitemap.xml', function () use ($supportedLocales) {
+    $pages = collect($supportedLocales)->map(function (string $locale): array {
+        return [
+            'loc' => route('landing', ['locale' => $locale]),
+            'lastmod' => now()->toDateString(),
+            'changefreq' => 'weekly',
+            'priority' => $locale === 'id' ? '1.0' : '0.9',
+        ];
+    });
+
+    return response()->view('sitemap', ['pages' => $pages], 200, [
+        'Content-Type' => 'application/xml; charset=UTF-8',
+    ]);
+})->name('sitemap');
+
+Route::get('/robots.txt', function () {
+    $lines = [
+        'User-agent: *',
+        'Allow: /',
+        'Sitemap: '.route('sitemap'),
+    ];
+
+    return response(implode("\n", $lines)."\n", 200, [
+        'Content-Type' => 'text/plain; charset=UTF-8',
+    ]);
+})->name('robots');
+
+Route::get('/locale/{locale}', function (string $locale) use ($supportedLocales) {
     abort_unless(in_array($locale, $supportedLocales, true), 404);
 
     session(['locale' => $locale]);
 
-    return redirect()->back();
+    $previousUrl = url()->previous();
+    $previousPath = parse_url($previousUrl, PHP_URL_PATH) ?: '';
+    $previousQuery = parse_url($previousUrl, PHP_URL_QUERY) ?: '';
+
+    $segments = array_values(array_filter(explode('/', trim($previousPath, '/'))));
+
+    if (isset($segments[0]) && in_array($segments[0], $supportedLocales, true)) {
+        $segments[0] = $locale;
+        $target = '/'.implode('/', $segments);
+
+        if ($previousQuery !== '') {
+            $target .= '?'.$previousQuery;
+        }
+
+        return redirect($target);
+    }
+
+    return redirect()->route('landing', ['locale' => $locale]);
 })->name('locale.switch');
 
-Route::get('/', function () {
+Route::get('/', fn () => redirect()->route('landing', ['locale' => 'id'], 301));
+
+Route::get('/{locale}', function (string $locale) use ($supportedLocales) {
+    abort_unless(in_array($locale, $supportedLocales, true), 404);
+
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+
     return view('welcome');
-});
+})->whereIn('locale', $supportedLocales)->name('landing');
