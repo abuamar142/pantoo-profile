@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ __('landing.meta.title') }}</title>
     <meta name="description" content="{{ __('landing.meta.description') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('pantoo.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('pantoo.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,8 +31,8 @@
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-8 xl:px-10">
             {{-- Logo --}}
             <a href="#" class="flex items-center gap-2 no-underline">
-                <div class="flex size-8 items-center justify-center rounded-lg bg-pantoo-600 dark:bg-pantoo-400">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <div class="flex size-8 items-center justify-center overflow-hidden rounded-lg">
+                    <img src="{{ asset('pantoo.ico') }}" alt="Pantoo icon" class="h-full w-full object-cover">
                 </div>
                 <span class="font-display text-xl font-bold text-ink-900 dark:text-ink-100">Pantoo</span>
             </a>
@@ -530,8 +532,8 @@
                 {{-- Brand --}}
                 <div>
                     <div class="mb-4 flex items-center gap-2">
-                        <div class="flex size-7 items-center justify-center rounded-md bg-pantoo-600 dark:bg-pantoo-400">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        <div class="flex size-7 items-center justify-center overflow-hidden rounded-md">
+                            <img src="{{ asset('pantoo.ico') }}" alt="Pantoo icon" class="h-full w-full object-cover">
                         </div>
                         <span class="font-display text-lg font-bold text-ink-900 dark:text-ink-100">Pantoo</span>
                     </div>
