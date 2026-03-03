@@ -108,8 +108,6 @@
                 <a href="#problem" class="nav-link">{{ $copy['nav']['problem'] }}</a>
                 <a href="#solution" class="nav-link">{{ $copy['nav']['solution'] }}</a>
                 <a href="#features" class="nav-link">{{ $copy['nav']['features'] }}</a>
-                <a href="#market" class="nav-link">{{ $copy['nav']['market'] }}</a>
-                <a href="#strategy" class="nav-link">{{ $copy['nav']['strategy'] }}</a>
             </div>
 
             {{-- Right Side --}}
@@ -145,8 +143,6 @@
         <a href="#problem" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['problem'] }}</a>
         <a href="#solution" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['solution'] }}</a>
         <a href="#features" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['features'] }}</a>
-        <a href="#market" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['market'] }}</a>
-        <a href="#strategy" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['strategy'] }}</a>
         <div class="mt-4 grid grid-cols-2 gap-2">
             <a href="{{ route('landing', ['locale' => 'id']) }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
             <a href="{{ route('landing', ['locale' => 'en']) }}" class="btn {{ $locale === 'en' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['en'] }}</a>
@@ -423,67 +419,6 @@
         </div>
     </section>
 
-    {{-- ==================== MARKET & BUSINESS MODEL ==================== --}}
-    <section id="market" class="section">
-        <div class="mx-auto max-w-7xl px-6 md:px-8 xl:px-10">
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                {{-- Target Market --}}
-                <div class="fade-up">
-                    <div class="chip mb-5">
-                        <span class="chip-dot"></span>
-                        {{ $copy['market']['chip'] }}
-                    </div>
-                    <h2 class="section-title mb-5">{{ $copy['market']['title'] }}</h2>
-                    <div class="mb-8 flex flex-col gap-3">
-                        @foreach ($copy['market']['targets'] as $item)
-                        <div class="flex items-center gap-3">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-check shrink-0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span class="text-[.925rem] text-ink-600 dark:text-ink-300">{{ $item }}</span>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="grid grid-cols-3 gap-4">
-                        @foreach ($copy['market']['sizes'] as $ms)
-                        <div class="card-flat p-5 text-center">
-                            <p class="mb-2 text-[.65rem] font-bold uppercase tracking-widest text-ink-400 dark:text-ink-500">{{ $ms['label'] }}</p>
-                            <p class="text-xs font-semibold text-ink-900 dark:text-ink-100">{{ $ms['desc'] }}</p>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                {{-- Business Model --}}
-                <div class="card fade-up fade-up-delay-2 p-10">
-                    <div class="chip mb-5">
-                        <span class="chip-dot"></span>
-                        {{ $copy['market']['business_chip'] }}
-                    </div>
-                    <h3 class="mb-6 font-display text-2xl font-bold text-ink-900 dark:text-ink-100">
-                        {{ $copy['market']['business_title'] }}
-                    </h3>
-                    <div class="mb-8 flex flex-col gap-4">
-                        @foreach ($copy['market']['business_items'] as $bm)
-                        <div class="flex items-start gap-3">
-                            <div class="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-pantoo-100 dark:bg-pantoo-600/15">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="stroke-pantoo-600 dark:stroke-pantoo-400" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            </div>
-                            <span class="text-[.9rem] leading-relaxed text-ink-600 dark:text-ink-300">{{ $bm }}</span>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="info-banner">
-                        <div class="info-banner-icon">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                        </div>
-                        <p class="text-xs leading-relaxed text-ink-600 dark:text-ink-300">
-                            <strong class="text-ink-900 dark:text-ink-100">{{ $copy['market']['business_note_label'] }}</strong> {{ $copy['market']['business_note'] }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     {{-- ==================== COMPETITIVE POSITIONING ==================== --}}
     <section class="section section-alt">
         <div class="mx-auto max-w-7xl px-6 md:px-8 xl:px-10">
@@ -516,59 +451,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- ==================== STRATEGY SECTION ==================== --}}
-    <section id="strategy" class="section">
-        <div class="mx-auto max-w-7xl px-6 md:px-8 xl:px-10">
-            <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                {{-- Go-to-Market --}}
-                <div class="fade-up">
-                    <div class="chip mb-5">
-                        <span class="chip-dot"></span>
-                        {{ $copy['strategy']['chip'] }}
-                    </div>
-                    <h2 class="section-title mb-8">{{ $copy['strategy']['title'] }}</h2>
-                    <div class="flex flex-col gap-5">
-                        @foreach ($copy['strategy']['phases'] as $phase)
-                        <div class="phase-card">
-                            <div class="flex items-start gap-4">
-                                <span class="phase-number">{{ $phase['n'] }}</span>
-                                <div>
-                                    <h4 class="mb-1.5 text-base font-bold text-ink-900 dark:text-ink-100">{{ $phase['title'] }}</h4>
-                                    <p class="text-xs leading-relaxed text-ink-600 dark:text-ink-300">{{ $phase['desc'] }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                {{-- Social Proof --}}
-                <div class="fade-up fade-up-delay-2">
-                    <div class="chip mb-5">
-                        <span class="chip-dot"></span>
-                        {{ $copy['strategy']['social_chip'] }}
-                    </div>
-                    <h2 class="section-title mb-6">{{ $copy['strategy']['social_title'] }}</h2>
-                    <div class="mb-8 flex flex-col gap-3">
-                        @foreach ($copy['strategy']['social_items'] as $traction)
-                        <div class="flex items-center gap-3">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="icon-check shrink-0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span class="text-[.925rem] text-ink-600 dark:text-ink-300">{{ $traction }}</span>
-                        </div>
-                        @endforeach
-                    </div>
-
-                    <div class="card border-pantoo-600/20 bg-pantoo-50 p-7 dark:border-pantoo-400/20 dark:bg-pantoo-600/10">
-                        <p class="mb-3 text-[.65rem] font-bold uppercase tracking-widest text-ink-400 dark:text-ink-500">{{ $copy['strategy']['tech_label'] }}</p>
-                        <p class="text-[.9rem] font-semibold leading-relaxed text-ink-900 dark:text-ink-100">
-                            {{ $copy['strategy']['tech_desc'] }}
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -617,8 +499,6 @@
                         <a href="#problem" class="footer-link">{{ $copy['nav']['problem'] }}</a>
                         <a href="#solution" class="footer-link">{{ $copy['nav']['solution'] }}</a>
                         <a href="#features" class="footer-link">{{ $copy['nav']['features'] }}</a>
-                        <a href="#market" class="footer-link">{{ $copy['nav']['market'] }}</a>
-                        <a href="#strategy" class="footer-link">{{ $copy['nav']['strategy'] }}</a>
                     </div>
                 </div>
 
