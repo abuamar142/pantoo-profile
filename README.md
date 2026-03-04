@@ -108,3 +108,22 @@ Cache ulang view (opsional, untuk validasi):
 php artisan view:clear
 php artisan view:cache
 ```
+
+## CI/CD Auto Deploy ke VPS (Push ke `master`)
+
+Project ini sudah disiapkan workflow GitHub Actions di:
+
+- `.github/workflows/deploy.yml`
+
+Saat ada push ke branch `master`, workflow akan SSH ke VPS lalu menjalankan:
+
+```bash
+git fetch origin master
+git checkout master
+git pull origin master --ff-only
+composer install --no-dev --optimize-autoloader
+php artisan optimize:clear
+php artisan optimize
+npm ci
+npm run build
+```
