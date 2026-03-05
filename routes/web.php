@@ -64,5 +64,64 @@ Route::get('/{locale}', function (string $locale) use ($supportedLocales) {
     session(['locale' => $locale]);
     app()->setLocale($locale);
 
-    return view('welcome');
+    $copy = trans('landing');
+
+    $canonicalUrl = route('landing', ['locale' => $locale]);
+    $alternateIdUrl = route('landing', ['locale' => 'id']);
+    $alternateEnUrl = route('landing', ['locale' => 'en']);
+
+    $robotsContent = app()->environment('production')
+        ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        : 'noindex, nofollow';
+
+    $ogLocale = $locale === 'id' ? 'id_ID' : 'en_US';
+    $ogLocaleAlternate = $locale === 'id' ? 'en_US' : 'id_ID';
+    $ogImageUrl = asset('pantoo.ico');
+
+    $schemaGraph = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Organization',
+                '@id' => $alternateIdUrl.'#organization',
+                'name' => 'Pantoo',
+                'url' => $alternateIdUrl,
+                'logo' => $ogImageUrl,
+                'description' => $copy['meta']['description'],
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => $alternateIdUrl.'#website',
+                'url' => $alternateIdUrl,
+                'name' => 'Pantoo',
+                'inLanguage' => $locale === 'id' ? 'id-ID' : 'en-US',
+                'publisher' => ['@id' => $alternateIdUrl.'#organization'],
+            ],
+            [
+                '@type' => 'SoftwareApplication',
+                '@id' => $canonicalUrl.'#software',
+                'name' => 'Pantoo',
+                'applicationCategory' => 'BusinessApplication',
+                'operatingSystem' => 'Web',
+                'url' => $canonicalUrl,
+                'description' => $copy['meta']['description'],
+                'publisher' => ['@id' => $alternateIdUrl.'#organization'],
+                'availableLanguage' => ['id-ID', 'en-US'],
+            ],
+        ],
+    ];
+
+    return view('welcome', [
+        'locale' => $locale,
+        'copy' => $copy,
+        'canonicalUrl' => $canonicalUrl,
+        'alternateIdUrl' => $alternateIdUrl,
+        'alternateEnUrl' => $alternateEnUrl,
+        'robotsContent' => $robotsContent,
+        'ogLocale' => $ogLocale,
+        'ogLocaleAlternate' => $ogLocaleAlternate,
+        'ogImageUrl' => $ogImageUrl,
+        'schemaGraph' => $schemaGraph,
+        'heroSlides' => $copy['hero']['slides'],
+    ]);
 })->whereIn('locale', $supportedLocales)->name('landing');

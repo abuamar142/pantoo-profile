@@ -16,9 +16,11 @@ return [
         'en' => 'EN',
     ],
     'nav' => [
+        'hero' => 'Atas',
         'problem' => 'Masalah',
         'solution' => 'Solusi',
         'features' => 'Fitur',
+        'positioning' => 'Perbandingan',
         'cta' => 'Coba Gratis',
         'menu' => 'Menu',
         'close_menu' => 'Tutup menu',

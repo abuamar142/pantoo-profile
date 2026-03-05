@@ -16,9 +16,11 @@ return [
         'en' => 'EN',
     ],
     'nav' => [
+        'hero' => 'Top',
         'problem' => 'Problem',
         'solution' => 'Solution',
         'features' => 'Features',
+        'positioning' => 'Comparison',
         'cta' => 'Try Free',
         'menu' => 'Menu',
         'close_menu' => 'Close menu',
