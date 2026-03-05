@@ -215,6 +215,64 @@
         @apply size-12 rounded-xl flex items-center justify-center shrink-0;
     }
 
+    /* ── Hero solve carousel ── */
+    .hero-solve-shell {
+        @apply relative;
+    }
+    .hero-solve-carousel {
+        @apply flex overflow-x-auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+    }
+    .hero-solve-carousel::-webkit-scrollbar {
+        display: none;
+    }
+    .hero-solve-slide {
+        @apply shrink-0 w-full;
+        flex-basis: 100%;
+        scroll-snap-align: start;
+    }
+    .hero-solve-btn {
+        @apply absolute top-1/2 z-10 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/45 text-ink-800 transition-all duration-200 cursor-pointer leading-none;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px) saturate(180%);
+        -webkit-backdrop-filter: blur(10px) saturate(180%);
+        box-shadow: 0 8px 24px -12px rgba(15, 23, 42, 0.45);
+    }
+    .hero-solve-btn svg {
+        @apply block;
+        pointer-events: none;
+    }
+    .hero-solve-btn:hover:not(:disabled) {
+        @apply scale-105 text-pantoo-700;
+    }
+    .hero-solve-btn:disabled {
+        @apply opacity-40 cursor-not-allowed;
+    }
+    .hero-solve-btn-prev {
+        left: 0.35rem;
+    }
+    .hero-solve-btn-next {
+        right: 0.35rem;
+    }
+    html[data-theme='dark'] .hero-solve-btn {
+        @apply border-white/15 text-ink-200;
+        background: rgba(17, 24, 39, 0.45);
+        box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.7);
+    }
+    @media (max-width: 768px) {
+        .hero-solve-btn {
+            @apply size-10;
+        }
+        .hero-solve-btn-prev {
+            left: 0.2rem;
+        }
+        .hero-solve-btn-next {
+            right: 0.2rem;
+        }
+    }
+
     /* ── Stat card ── */
     .stat-value {
         @apply font-display text-3xl font-extrabold text-pantoo-600 dark:text-pantoo-400;
