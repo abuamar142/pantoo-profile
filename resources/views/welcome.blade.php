@@ -47,6 +47,8 @@
             ],
         ],
     ];
+
+    $heroSlides = $copy['hero']['slides'];
 @endphp
 <html lang="{{ str_replace('_', '-', $locale) }}">
 <head>
@@ -160,20 +162,37 @@
             <div class="grid grid-cols-1 items-center gap-12">
                 {{-- Hero Content --}}
                 <div class="fade-up text-center">
-                    <div class="chip mb-6">
-                        <span class="chip-dot"></span>
-                        {{ $copy['hero']['chip'] }}
+                    <div class="hero-solve-shell mx-auto mb-8 max-w-8xl">
+                        <button id="hero-solve-prev" type="button" class="hero-solve-btn hero-solve-btn-prev" aria-label="Previous solved problem">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                        <div id="hero-solve-carousel" class="hero-solve-carousel">
+                            @foreach ($heroSlides as $slide)
+                            <article class="hero-solve-slide">
+                                <div class="chip mb-6">
+                                    <span class="chip-dot"></span>
+                                    {{ $slide['chip'] }}
+                                </div>
+                                <h1 class="mx-auto mb-6 font-display text-[clamp(2rem,5.5vw,3.5rem)] font-extrabold leading-[1.1] text-ink-900 dark:text-ink-100">
+                                    {{ $slide['title_line_1'] }}
+                                    @if (!empty($slide['title_line_2']))
+                                        <br>
+                                        <span class="bg-gradient-to-r from-pantoo-600 to-cyan-500 bg-clip-text text-transparent">
+                                            {{ $slide['title_line_2'] }}
+                                        </span>
+                                    @endif
+                                </h1>
+                                <p class="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
+                                    {{ $slide['description_1'] }}
+                                    {{ $slide['description_2'] }}
+                                </p>
+                            </article>
+                            @endforeach
+                        </div>
+                        <button id="hero-solve-next" type="button" class="hero-solve-btn hero-solve-btn-next" aria-label="Next solved problem">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
                     </div>
-                    <h1 class="mx-auto mb-6 font-display text-[clamp(2rem,5.5vw,3.5rem)] font-extrabold leading-[1.1] text-ink-900 dark:text-ink-100">
-                        {{ $copy['hero']['title_line_1'] }}<br>
-                        <span class="bg-gradient-to-r from-pantoo-600 to-cyan-500 bg-clip-text text-transparent">
-                            {{ $copy['hero']['title_line_2'] }}
-                        </span>
-                    </h1>
-                    <p class="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-ink-600 dark:text-ink-300">
-                        {{ $copy['hero']['description_1'] }}
-                        {{ $copy['hero']['description_2'] }}
-                    </p>
                     <div class="mb-12 flex flex-wrap items-center justify-center gap-3">
                         <a href="#solution" class="btn btn-accent">
                             {{ $copy['hero']['primary_cta'] }}
@@ -600,6 +619,75 @@
             fadeEls.forEach(function(el) { obs.observe(el); });
         } else {
             fadeEls.forEach(function(el) { el.classList.add('visible'); });
+        }
+
+        // Hero solve carousel controls
+        var heroSolveCarousel = document.getElementById('hero-solve-carousel');
+        var heroSolvePrev = document.getElementById('hero-solve-prev');
+        var heroSolveNext = document.getElementById('hero-solve-next');
+
+        if (heroSolveCarousel && heroSolvePrev && heroSolveNext) {
+            var heroSolveSlides = heroSolveCarousel.querySelectorAll('.hero-solve-slide');
+            var totalHeroSlides = heroSolveSlides.length;
+            var currentHeroSlide = 0;
+
+            function clampHeroIndex(idx) {
+                if (idx < 0) return 0;
+                if (idx > totalHeroSlides - 1) return totalHeroSlides - 1;
+                return idx;
+            }
+
+            function getSlideStep() {
+                var firstSlide = heroSolveCarousel.querySelector('.hero-solve-slide');
+                if (!firstSlide) return heroSolveCarousel.clientWidth;
+                var styles = window.getComputedStyle(heroSolveCarousel);
+                var gap = parseFloat(styles.columnGap);
+                if (Number.isNaN(gap)) gap = parseFloat(styles.gap);
+                if (Number.isNaN(gap)) gap = 0;
+
+                var slideWidth = firstSlide.getBoundingClientRect().width;
+                if (!slideWidth) return heroSolveCarousel.clientWidth;
+
+                return slideWidth + gap;
+            }
+
+            function goToHeroSlide(index, behavior) {
+                if (!totalHeroSlides) return;
+                currentHeroSlide = clampHeroIndex(index);
+                heroSolveCarousel.scrollTo({
+                    left: getSlideStep() * currentHeroSlide,
+                    behavior: behavior || 'smooth'
+                });
+                updateHeroSolveNavState();
+            }
+
+            function updateHeroSolveNavState() {
+                heroSolvePrev.disabled = currentHeroSlide <= 0;
+                heroSolveNext.disabled = currentHeroSlide >= (totalHeroSlides - 1);
+            }
+
+            heroSolvePrev.addEventListener('click', function() {
+                goToHeroSlide(currentHeroSlide - 1, 'smooth');
+            });
+
+            heroSolveNext.addEventListener('click', function() {
+                goToHeroSlide(currentHeroSlide + 1, 'smooth');
+            });
+
+            heroSolveCarousel.addEventListener('scroll', function() {
+                var step = getSlideStep();
+                if (!step) return;
+                currentHeroSlide = clampHeroIndex(Math.round(heroSolveCarousel.scrollLeft / step));
+                updateHeroSolveNavState();
+            }, { passive: true });
+
+            window.addEventListener('resize', function() {
+                goToHeroSlide(currentHeroSlide, 'auto');
+            });
+
+            requestAnimationFrame(function() {
+                goToHeroSlide(0, 'auto');
+            });
         }
     })();
     </script>
