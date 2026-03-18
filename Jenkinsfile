@@ -1,39 +1,28 @@
 pipeline {
   agent any
 
-  parameters {
-    string(name: 'VPS_HOST', defaultValue: '', description: 'VPS IP or hostname that Jenkins can reach')
-    string(name: 'VPS_USERNAME', defaultValue: 'deploy', description: 'SSH user with deploy privileges')
-    string(name: 'VPS_PORT', defaultValue: '22', description: 'SSH port (usually 22)')
-    string(name: 'VPS_PROJECT_PATH', defaultValue: '/var/www/app', description: 'Location of the Laravel project on the VPS')
-  }
-
-  environment {
-    DEPLOY_BRANCH = 'master'
-  }
-
   stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-
     stage('Deploy via SSH') {
-      when {
-        expression { params.VPS_HOST?.trim() }
-      }
       steps {
-        withCredentials([string(credentialsId: 'vps-password', variable: 'VPS_PASSWORD')]) {
+        withCredentials([
+          string(credentialsId: 'vps-host', variable: 'VPS_HOST'),
+          string(credentialsId: 'vps-username', variable: 'VPS_USERNAME'),
+          string(credentialsId: 'vps-port', variable: 'VPS_PORT'),
+          string(credentialsId: 'vps-project-path', variable: 'VPS_PROJECT_PATH'),
+          string(credentialsId: 'vps-deploy-branch', variable: 'DEPLOY_BRANCH')
+        ]) {
+          sshagent(credentials: ['vps-ssh-key']) {
           sh '''
             set -eu
 
-            if ! command -v sshpass >/dev/null 2>&1; then
-              echo "sshpass is required for password-based SSH. Install it inside the Jenkins agent image."
-              exit 1
-            fi
+            for required_var in VPS_HOST VPS_USERNAME VPS_PORT VPS_PROJECT_PATH DEPLOY_BRANCH; do
+              if [ -z "$(eval "printf '%s' \"\\${$required_var}\"")" ]; then
+                echo "Missing required Jenkins credential value: $required_var"
+                exit 1
+              fi
+            done
 
-            sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -p "$VPS_PORT" "${VPS_USERNAME}@${VPS_HOST}" "bash -se -- '${VPS_PROJECT_PATH}' '${DEPLOY_BRANCH}'" <<'EOF'
+            ssh -o ConnectTimeout=15 -o StrictHostKeyChecking=no -p "$VPS_PORT" "${VPS_USERNAME}@${VPS_HOST}" "bash -se -- '${VPS_PROJECT_PATH}' '${DEPLOY_BRANCH}'" <<'EOF'
               set -eu
 
               VPS_PROJECT_PATH="$1"
@@ -60,6 +49,7 @@ pipeline {
               fi
 EOF
           '''
+          }
         }
       }
     }
