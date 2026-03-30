@@ -146,6 +146,18 @@ return [
             ],
         ],
     ],
+    'pricing' => [
+        'chip' => 'Paket Berlangganan',
+        'title' => 'Pilih Paket yang Sesuai dengan Bisnis Anda',
+        'subtitle' => 'Tidak ada biaya tersembunyi. Bayar sesuai skala perusahaan Anda.',
+        'monthly' => '/bulan',
+        'yearly' => '/tahun',
+        'user_limit' => 'Maks :max Pengguna',
+        'branch_limit' => 'Maks :max Cabang',
+        'features_title' => 'Fitur Utama:',
+        'cta' => 'Pilih Paket',
+        'recommended' => 'Paling Diminati',
+    ],
     'features' => [
         'chip' => 'Fitur Unggulan Pantoo',
         'title' => 'Satu Platform. Semua Cabang. Semua Kebutuhan.',

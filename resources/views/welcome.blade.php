@@ -26,6 +26,8 @@
 
     @include('landing.partials.features')
 
+    @include('landing.partials.pricing')
+
     @include('landing.partials.positioning')
 
     @include('landing.partials.cta')

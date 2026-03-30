@@ -35,4 +35,6 @@ return [
         ],
     ],
 
+    'graphql_endpoint' => env('GRAPHQL_ENDPOINT', 'https://graphql.kuitansiku.my.id/graphql'),
+
 ];

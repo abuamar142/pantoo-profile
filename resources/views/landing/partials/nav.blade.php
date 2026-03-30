@@ -2,7 +2,7 @@
     <nav class="nav-bar" id="navbar">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-8 xl:px-10">
             {{-- Logo --}}
-            <a href="{{ route('landing', ['locale' => $locale]) }}" class="flex items-center gap-2 no-underline">
+            <a href="{{ route('landing', $locale === 'id' ? [] : ['locale' => $locale]) }}" class="flex items-center gap-2 no-underline">
                 <div class="flex size-8 items-center justify-center overflow-hidden rounded-lg">
                     <img src="{{ asset('pantoo.ico') }}" alt="Pantoo icon" class="h-full w-full object-cover">
                 </div>
@@ -21,7 +21,7 @@
             {{-- Right Side --}}
             <div class="flex items-center gap-2">
                 <div class="lang-switch" aria-label="{{ $copy['lang']['aria'] }}">
-                    <a href="{{ route('landing', ['locale' => 'id']) }}" class="lang-btn {{ $locale === 'id' ? 'active' : '' }}">{{ $copy['lang']['id'] }}</a>
+                    <a href="{{ route('landing') }}" class="lang-btn {{ $locale === 'id' ? 'active' : '' }}">{{ $copy['lang']['id'] }}</a>
                     <a href="{{ route('landing', ['locale' => 'en']) }}" class="lang-btn {{ $locale === 'en' ? 'active' : '' }}">{{ $copy['lang']['en'] }}</a>
                 </div>
                 <button id="theme-toggle" type="button" class="theme-btn" aria-label="{{ $copy['theme']['toggle'] }}">
@@ -54,7 +54,7 @@
         <a href="#features" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['features'] }}</a>
         <a href="#positioning" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['positioning'] }}</a>
         <div class="mt-4 grid grid-cols-2 gap-2">
-            <a href="{{ route('landing', ['locale' => 'id']) }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
+            <a href="{{ route('landing') }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
             <a href="{{ route('landing', ['locale' => 'en']) }}" class="btn {{ $locale === 'en' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['en'] }}</a>
         </div>
         <div class="mt-auto pt-8">

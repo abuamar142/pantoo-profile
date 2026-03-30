@@ -146,6 +146,18 @@ return [
             ],
         ],
     ],
+    'pricing' => [
+        'chip' => 'Subscription Packages',
+        'title' => 'Choose the Right Plan for Your Business',
+        'subtitle' => 'No hidden fees. Pay as you scale.',
+        'monthly' => '/month',
+        'yearly' => '/year',
+        'user_limit' => 'Max :max Users',
+        'branch_limit' => 'Max :max Branches',
+        'features_title' => 'Key Features:',
+        'cta' => 'Choose Plan',
+        'recommended' => 'Most Popular',
+    ],
     'features' => [
         'chip' => 'Core Features',
         'title' => 'One Platform. All Branches. All Needs.',

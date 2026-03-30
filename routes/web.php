@@ -43,7 +43,11 @@ Route::get('/locale/{locale}', function (string $locale) use ($supportedLocales)
     $segments = array_values(array_filter(explode('/', trim($previousPath, '/'))));
 
     if (isset($segments[0]) && in_array($segments[0], $supportedLocales, true)) {
-        $segments[0] = $locale;
+        if ($locale === 'id') {
+            array_shift($segments); // Remove the locale prefix for 'id' route
+        } else {
+            $segments[0] = $locale;
+        }
         $target = '/'.implode('/', $segments);
 
         if ($previousQuery !== '') {
@@ -53,21 +57,21 @@ Route::get('/locale/{locale}', function (string $locale) use ($supportedLocales)
         return redirect($target);
     }
 
-    return redirect()->route('landing', ['locale' => $locale]);
+    return redirect()->route('landing', $locale === 'id' ? [] : ['locale' => $locale]);
 })->name('locale.switch');
 
-Route::get('/', fn () => redirect()->route('landing', ['locale' => 'id'], 301));
-
-Route::get('/{locale}', function (string $locale) use ($supportedLocales) {
-    abort_unless(in_array($locale, $supportedLocales, true), 404);
+Route::get('/{locale?}', function (?string $locale = 'id') use ($supportedLocales) {
+    if (!in_array($locale, $supportedLocales, true)) {
+        abort(404);
+    }
 
     session(['locale' => $locale]);
     app()->setLocale($locale);
 
     $copy = trans('landing');
 
-    $canonicalUrl = route('landing', ['locale' => $locale]);
-    $alternateIdUrl = route('landing', ['locale' => 'id']);
+    $canonicalUrl = route('landing', $locale === 'id' ? [] : ['locale' => $locale]);
+    $alternateIdUrl = route('landing');
     $alternateEnUrl = route('landing', ['locale' => 'en']);
 
     $robotsContent = app()->environment('production')
@@ -111,6 +115,63 @@ Route::get('/{locale}', function (string $locale) use ($supportedLocales) {
         ],
     ];
 
+    $client = new \App\Services\GraphQLClient();
+
+    $query = '
+        fragment SalesPackageFeatureFields on SalesPackageFeature {
+          _id
+          name
+          description
+          icon
+          category
+          priority
+          is_active
+          status
+          createdAt
+          updatedAt
+        }
+        fragment SalesPackagePlanFields on SalesPackagePlan {
+          _id
+          code
+          package_name
+          description
+          price_monthly
+          price_yearly
+          user_min
+          user_max
+          branch_min
+          branch_max
+          feature_ids
+          feature_items {
+            ...SalesPackageFeatureFields
+          }
+          features
+          is_recommended
+          is_active
+          status
+          createdAt
+          updatedAt
+        }
+        query GetAllSalesPackagePlans($filter: SalesPackagePlanFilter) {
+          GetAllSalesPackagePlans(filter: $filter) {
+            data { ...SalesPackagePlanFields }
+            total
+            page
+            limit
+          }
+        }
+    ';
+
+    $variables = [
+        'filter' => [
+            'page' => 1,
+            'limit' => 50,
+        ]
+    ];
+
+    $response = $client->query($query, $variables);
+    $pricingPlans = $response['GetAllSalesPackagePlans']['data'] ?? [];
+
     return view('welcome', [
         'locale' => $locale,
         'copy' => $copy,
@@ -123,5 +184,6 @@ Route::get('/{locale}', function (string $locale) use ($supportedLocales) {
         'ogImageUrl' => $ogImageUrl,
         'schemaGraph' => $schemaGraph,
         'heroSlides' => $copy['hero']['slides'],
+        'pricingPlans' => $pricingPlans,
     ]);
 })->whereIn('locale', $supportedLocales)->name('landing');
