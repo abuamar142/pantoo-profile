@@ -187,3 +187,107 @@ Route::get('/{locale?}', function (?string $locale = 'id') use ($supportedLocale
         'pricingPlans' => $pricingPlans,
     ]);
 })->whereIn('locale', $supportedLocales)->name('landing');
+
+// --- Package Detail Route Logic ---
+$packageDetailLogic = function (string $locale, string $id) use ($supportedLocales) {
+    if (!in_array($locale, $supportedLocales, true)) {
+        abort(404);
+    }
+
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+
+    $copy = trans('landing'); // Reusing landing translations
+
+    $canonicalUrl = route('package.detail' . ($locale === 'id' ? '' : '.locale'), $locale === 'id' ? ['id' => $id] : ['locale' => $locale, 'id' => $id]);
+    $robotsContent = app()->environment('production') ? 'index, follow' : 'noindex, nofollow';
+
+    $client = new \App\Services\GraphQLClient();
+    $query = '
+        fragment SalesPackageFeatureFields on SalesPackageFeature {
+          _id
+          name
+          description
+          icon
+          category
+          priority
+          is_active
+          status
+          createdAt
+          updatedAt
+        }
+        fragment SalesPackagePlanFields on SalesPackagePlan {
+          _id
+          code
+          package_name
+          description
+          price_monthly
+          price_yearly
+          user_min
+          user_max
+          branch_min
+          branch_max
+          feature_ids
+          feature_items {
+            ...SalesPackageFeatureFields
+          }
+          features
+          is_recommended
+          is_active
+          status
+          createdAt
+          updatedAt
+        }
+        query GetOneSalesPackagePlan($_id: ID!) {
+          GetOneSalesPackagePlan(_id: $_id) { ...SalesPackagePlanFields }
+        }
+    ';
+
+    $response = $client->query($query, ['_id' => $id]);
+    $package = $response['GetOneSalesPackagePlan'] ?? null;
+
+    if (!$package) {
+        abort(404, 'Package not found');
+    }
+
+    $alternateIdUrl = route('package.detail', ['id' => $id]);
+    $alternateEnUrl = route('package.detail.locale', ['locale' => 'en', 'id' => $id]);
+
+    $ogImageUrl = asset('pantoo.ico');
+
+    $schemaGraph = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Product',
+                '@id' => $canonicalUrl.'#product',
+                'name' => 'Pantoo - ' . $package['package_name'],
+                'url' => $canonicalUrl,
+                'description' => $package['description'] ?: $copy['meta']['description'],
+                'image' => $ogImageUrl,
+            ]
+        ],
+    ];
+
+    return view('package.detail', [
+        'locale' => $locale,
+        'copy' => $copy,
+        'package' => $package,
+        'canonicalUrl' => $canonicalUrl,
+        'alternateIdUrl' => $alternateIdUrl,
+        'alternateEnUrl' => $alternateEnUrl,
+        'robotsContent' => $robotsContent,
+        'ogLocale' => $locale === 'id' ? 'id_ID' : 'en_US',
+        'ogLocaleAlternate' => $locale === 'id' ? 'en_US' : 'id_ID',
+        'ogImageUrl' => $ogImageUrl,
+        'schemaGraph' => $schemaGraph,
+    ]);
+};
+
+Route::get('/paket/{id}', function (string $id) use ($packageDetailLogic) {
+    return $packageDetailLogic('id', $id);
+})->name('package.detail');
+
+Route::get('/{locale}/paket/{id}', function (string $locale, string $id) use ($packageDetailLogic) {
+    return $packageDetailLogic($locale, $id);
+})->whereIn('locale', $supportedLocales)->name('package.detail.locale');

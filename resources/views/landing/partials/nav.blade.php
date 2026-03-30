@@ -16,6 +16,7 @@
                 <a href="#solution" class="nav-link">{{ $copy['nav']['solution'] }}</a>
                 <a href="#features" class="nav-link">{{ $copy['nav']['features'] }}</a>
                 <a href="#positioning" class="nav-link">{{ $copy['nav']['positioning'] }}</a>
+                <a href="#pricing" class="nav-link">{{ $copy['nav']['pricing'] }}</a>
             </div>
 
             {{-- Right Side --}}
@@ -53,6 +54,7 @@
         <a href="#solution" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['solution'] }}</a>
         <a href="#features" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['features'] }}</a>
         <a href="#positioning" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['positioning'] }}</a>
+        <a href="#pricing" class="mobile-menu-link" onclick="closeMobileMenu()">{{ $copy['nav']['pricing'] }}</a>
         <div class="mt-4 grid grid-cols-2 gap-2">
             <a href="{{ route('landing') }}" class="btn {{ $locale === 'id' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['id'] }}</a>
             <a href="{{ route('landing', ['locale' => 'en']) }}" class="btn {{ $locale === 'en' ? 'btn-accent' : 'btn-outline' }} py-2">{{ $copy['lang']['en'] }}</a>

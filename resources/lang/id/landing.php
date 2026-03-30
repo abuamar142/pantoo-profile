@@ -16,13 +16,14 @@ return [
         'en' => 'EN',
     ],
     'nav' => [
-        'hero' => 'Atas',
+        'hero' => 'Beranda',
         'problem' => 'Masalah',
         'solution' => 'Solusi',
         'features' => 'Fitur',
-        'positioning' => 'Perbandingan',
-        'cta' => 'Coba Gratis',
-        'menu' => 'Menu',
+        'positioning' => 'Keunggulan',
+        'pricing' => 'Harga',
+        'cta' => 'Mulai',
+        'menu' => 'Buka Menu Utama',
         'close_menu' => 'Tutup menu',
     ],
     'hero' => [

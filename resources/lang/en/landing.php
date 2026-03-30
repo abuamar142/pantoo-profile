@@ -16,13 +16,14 @@ return [
         'en' => 'EN',
     ],
     'nav' => [
-        'hero' => 'Top',
+        'hero' => 'Home',
         'problem' => 'Problem',
         'solution' => 'Solution',
         'features' => 'Features',
-        'positioning' => 'Comparison',
-        'cta' => 'Try Free',
-        'menu' => 'Menu',
+        'positioning' => 'Benefits',
+        'pricing' => 'Pricing',
+        'cta' => 'Get Started',
+        'menu' => 'Open Main Menu',
         'close_menu' => 'Close menu',
     ],
     'hero' => [

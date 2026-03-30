@@ -51,7 +51,7 @@
                             </ul>
                         </div>
                         
-                        <a href="#cta" class="mt-4 block w-full rounded-xl bg-ink-900 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-ink-800 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200 {{ $plan['is_recommended'] ? 'bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:text-white' : '' }}">
+                        <a href="{{ route('package.detail' . ($locale === 'id' ? '' : '.locale'), $locale === 'id' ? ['id' => $plan['_id']] : ['locale' => $locale, 'id' => $plan['_id']]) }}" class="mt-4 block w-full rounded-xl bg-ink-900 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-ink-800 dark:bg-white dark:text-ink-900 dark:hover:bg-ink-200 {{ $plan['is_recommended'] ? 'bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:text-white' : '' }}">
                             {{ $copy['pricing']['cta'] }}
                         </a>
                     </article>
