@@ -22,7 +22,7 @@ return [
         'features' => 'Fitur',
         'positioning' => 'Keunggulan',
         'pricing' => 'Harga',
-        'cta' => 'Mulai',
+        'cta' => 'Coba Gratis',
         'menu' => 'Buka Menu Utama',
         'close_menu' => 'Tutup menu',
     ],

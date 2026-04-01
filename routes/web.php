@@ -166,6 +166,7 @@ Route::get('/{locale?}', function (?string $locale = 'id') use ($supportedLocale
         'filter' => [
             'page' => 1,
             'limit' => 50,
+            'hide_free_unlimited' => true,
         ]
     ];
 
